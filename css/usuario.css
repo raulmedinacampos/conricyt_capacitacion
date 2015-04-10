@@ -1,0 +1,27 @@
+/* Hoja de estilos para secciones de usuario */
+.bienvenida {
+	padding: 5px 0 4px;
+	margin-bottom: 35px;
+	background-color: #194C85;
+	border-bottom: 5px #F18A1E solid;
+	border-radius: 6px 6px 0 0;
+	box-shadow: 0 2px 12px #000000;
+	text-align: center;
+}
+
+.bienvenida h3 {
+	color: #F18A1E;
+	font-size: 45px;
+}
+
+.nombre {
+	margin: -12px 128px 0 0;
+	color: #FFFFFF;
+	text-align: right;
+}
+
+h4.cursos {
+	padding: 3px 0 3px 22px;
+	background-color: #194C85;
+	color: #FFFFFF;
+}
