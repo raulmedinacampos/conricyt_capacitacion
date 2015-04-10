@@ -9,18 +9,13 @@
 <link rel="shortcut icon" href="<?php echo base_url('favicon.ico'); ?>">
 
 <!-- Hojas de estilos -->
-<link href='http://fonts.googleapis.com/css?family=Scada:400,700'
-	rel='stylesheet' type='text/css' />
-<link href="<?php echo base_url('css/bootstrap.min.css'); ?>"
-	rel="stylesheet" type="text/css" />
-<link href="<?php echo base_url('css/estilos.css'); ?>" rel="stylesheet"
-	type="text/css" />
+<link href='http://fonts.googleapis.com/css?family=Scada:400,700' rel='stylesheet' type='text/css' />
+<link href="<?php echo base_url('css/bootstrap.min.css'); ?>" rel="stylesheet" type="text/css" />
+<link href="<?php echo base_url('css/estilos.css'); ?>" rel="stylesheet" type="text/css" />
 
 <!-- Scripts (jQuery y Bootstrap) -->
-<script type="text/javascript"
-	src="<?php echo base_url('scripts/jquery-1.11.0.min.js'); ?>"></script>
-<script type="text/javascript"
-	src="<?php echo base_url('scripts/bootstrap.min.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('scripts/jquery-1.11.0.min.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('scripts/bootstrap.min.js'); ?>"></script>
 </head>
 
 <body>
@@ -64,17 +59,9 @@
 			<div id="banner">
 
 				<div id="banner-fondo">
-					<img src="<?php echo base_url('images/header-banner2.png'); ?>"
+					<img src="<?php echo base_url('images/header-banner.jpg'); ?>"
 						style="width: 100%; cursor: pointer;">
 				</div>
-
-				<!--        <div id="banner-tablet" > <img src="<?php echo base_url(); ?>images/banner-tablet.png" style="width:100%;">
-        </div>-->
-
-				<!--        <div id="banner-libros" > 
-        <img src="<?php echo base_url(); ?>images/header-libros.png" style=" width:100%;">
-        </div>-->
-
 
 				<div id="banner-redes">
 
@@ -106,19 +93,13 @@
 				</div>
 
 				<div id="banner-login">
-					<form action="http://localhost/moodle/login/index.php"
-						method="post" id="logeo" target="_blank">
+					<form action="<?php echo base_url('login'); ?>" method="post" id="logeo">
 
 						<div id="banner-login-2">
 
-							<label for="username">usuario: </label> <input type="text"
-								id="username" name="username" height="25" width="100" value="">
-
-							<label for="password">clave: </label> <input type="password"
-								id="password" name="password" height="25" width="100" value="">
-
-
-							<input type="submit" value="Enviar" id="enviar">&nbsp;&nbsp;
+							<label>usuario </label> <input type="text" id="usuario" name="usuario" />
+							<label>clave </label> <input type="password" id="password" name="password" />
+							<label>&nbsp;</label> <input type="submit" value="Enviar" id="enviar">&nbsp;&nbsp;
 
 						</div>
 

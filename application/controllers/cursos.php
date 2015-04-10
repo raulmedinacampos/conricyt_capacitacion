@@ -25,8 +25,9 @@
 			$this->load->helper('form');
 			$html = '';
 			$seleccion = $this->input->post('seleccion');
+			$curso = $this->input->post('curso');
 			$attr = array(
-						  'id'		=>	$seleccion,
+						  'id'		=>	"chk_".$seleccion,
 						  'name'	=>	'cursos[]',
 						  'checked'	=>	TRUE,
 						  'value'	=>	$seleccion
@@ -40,9 +41,8 @@
 					$html .= "<br/>";
 				}
 				$html .= form_checkbox($attr);
-				//$html .= '<span title="aaaa">';
 				$html .= '<span>';
-				$html .= $seleccion;
+				$html .= $curso;
 				$html .= '</span>';
 			}
 			

@@ -10,15 +10,9 @@
          
          <br><br>
          <div id="contenido-texto" >
-         <p>
-         El Centro de Capacitación Virtual del Consorcio Nacional de Recursos de Información Científica y Tecnológica (CONRICYT), pone a disposición a todos aquellos interesados en el uso de la información científica y tecnológica un centro de capacitación el cual les pemite aprender acerca de como  acceder de manera eficiente, y fácil a la información deseada, que puedan localizar y recuperar la información de los recursos contratados por el CONRICYT.</p>
-         
-         <p>El Centro de Capacitación Virtual pretende desarrollar, en los usuarios fianles,  habilidades para la búsqueda, recuperación y uso de la información científica y tecnológica, por medio de cursos remotos que permitan comprender  cómo buscar y recuperar información así como desarrollar habilidades en el manejo de las plataformas de los editoriales contratados por el CONRICYT. 
-         </p>
-         
-         <p>Este esfuerzo esta  dirigido a todo aquel que requiera  capacitarse para la busqueda y recuperación de la información. </p>
-        
-         
+         <p>Como un referente en el uso de recursos de información científica y tecnológica, se relaciona a las habilidades de búsqueda y recuperación de información, es por ello, que en el Centro de Capacitación Virtual del Consorcio Nacional de Recursos de Información Científica y Tecnológica (CONRICYT) desarrollarás estas habilidades que te permitirán conocer de manera una fácil y eficiente la estructura, navegación y tipo de información con que cuenta cada una de las plataformas de las editoriales mediante los contenidos de cada curso que se ponen a tu disposición.</p>
+ 
+		 <p>El Centro de Capacitación Virtual está dirigido a investigadores, docentes, estudiantes, bibliotecarios y referencistas de Instituciones de Educación Superior, Centros de Investigación, o cualquier institución que en su quehacer cotidiano haga uso de información científica y tecnológica más actual, así como estar al día en la generación de nuevo conocimiento para la realización de trabajos monográficos, tesis, diseño de temáticas para cátedras e investigaciones formales. y que requieran comprender sobre el uso de las Plataformas de información que en este Centro de Capacitación se ofrece</p>
          
          
          

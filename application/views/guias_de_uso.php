@@ -8,7 +8,7 @@
          
          <br><br>
          <div id="contenido-texto" >
-         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse pharetra auctor arcu sed molestie. Proin volutpat, tellus quis fermentum consectetur, lacus eros ultricies nulla, sollicitudin semper nibh libero ac lectus. Donec ut fringilla quam, vitae consectetur diam. 
+         Si tienes alguna duda sobre el funcionamiento de la plataforma del Centro de Capacitación Virtual, aquí encontrarás la información que te guiará en el uso de la misma. 
          <br /><br />
          
          <!-- guia -->
@@ -37,7 +37,7 @@
          <!-- Fin guia -->
          
          
-         <br><br>
+         <br style="clear: both;">
          </div>
          
          <br><br>

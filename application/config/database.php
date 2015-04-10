@@ -45,14 +45,14 @@
 | the active record class
 */
 
-$active_group = 'dev';
+$active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = '';
-$db['default']['password'] = '';
-$db['default']['database'] = '';
-$db['default']['dbdriver'] = 'mysql';
+$db['default']['username'] = 'postgres';
+$db['default']['password'] = 'hola123';
+$db['default']['database'] = 'capacitacion_registro';
+$db['default']['dbdriver'] = 'postgre';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
 $db['default']['db_debug'] = TRUE;
@@ -64,37 +64,6 @@ $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
 
-$db['dev']['hostname'] = 'localhost';
-$db['dev']['username'] = 'postgres';
-$db['dev']['password'] = 'hola123';
-$db['dev']['database'] = 'capacitacion_registro';
-$db['dev']['dbdriver'] = 'postgre';
-$db['dev']['dbprefix'] = '';
-$db['dev']['pconnect'] = TRUE;
-$db['dev']['db_debug'] = TRUE;
-$db['dev']['cache_on'] = FALSE;
-$db['dev']['cachedir'] = '';
-$db['dev']['char_set'] = 'utf8';
-$db['dev']['dbcollat'] = 'utf8_general_ci';
-$db['dev']['swap_pre'] = '';
-$db['dev']['autoinit'] = TRUE;
-$db['dev']['stricton'] = FALSE;
-
-$db['moodle']['hostname'] = 'localhost';
-$db['moodle']['username'] = 'root';
-$db['moodle']['password'] = '';
-$db['moodle']['database'] = 'moodle';
-$db['moodle']['dbdriver'] = 'mysql';
-$db['moodle']['dbprefix'] = '';
-$db['moodle']['pconnect'] = TRUE;
-$db['moodle']['db_debug'] = TRUE;
-$db['moodle']['cache_on'] = FALSE;
-$db['moodle']['cachedir'] = '';
-$db['moodle']['char_set'] = 'utf8';
-$db['moodle']['dbcollat'] = 'utf8_general_ci';
-$db['moodle']['swap_pre'] = '';
-$db['moodle']['autoinit'] = TRUE;
-$db['moodle']['stricton'] = FALSE;
 
 /* End of file database.php */
 /* Location: ./application/config/database.php */
