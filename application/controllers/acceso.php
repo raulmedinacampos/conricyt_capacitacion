@@ -14,8 +14,8 @@ class Acceso extends CI_Controller {
 		$curso = $this->registro->getMoodleCourse($shortname->nombre_corto);
 		$usuario = $this->acceso->getDataByID($this->session->userdata('usuario'));
 		
-		//$ruta_login = base_url('evaluacion/login/index.php');
-		$ruta_login = 'http://moodle.dev/login/index.php?id='.$curso->id;
+		$ruta_login = 'http://capa.conricyt.mx/moodle/login/index.php?id='.$curso->id;
+		//$ruta_login = 'http://moodle.dev/login/index.php?id='.$curso->id;
 		
 		echo '<script type="text/javascript" src="'.base_url('scripts/jquery-1.11.0.min.js').'"></script>';
 		
@@ -46,7 +46,7 @@ class Acceso extends CI_Controller {
 		echo '$(function() {$("#form1").submit();});';
 		echo '</script>';
 		
-		echo '<h4>Estas accediendo a los cursos de capacitación ...</h4>';
+		echo '<h4>Estas accediendo a los cursos de capacitaci&oacute;n ...</h4>';
 	}
 }
 ?>

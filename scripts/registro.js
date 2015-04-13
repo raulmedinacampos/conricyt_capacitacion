@@ -40,6 +40,12 @@ function evitarCopyPaste() {
 	});
 }
 
+function cambiarCaptcha() {
+	$("#btn_captcha").click(function(e) {
+		obtenerImagen();
+	});
+}
+
 // Validación de los apellidos. Puede no tener paterno o materno, el otro es obligatorio.
 function validarApellidos() {
 	$("#chkApPaterno, #chkApMaterno").click(function() {
@@ -156,6 +162,8 @@ function validarFormulario() {
 	
 	$("#btnEnviar").click(function() {
 		if($("#formRegistro").valid()) {
+			$("#mensajesModal .modal-footer .btn-primary").removeAttr("disabled");
+			
 			var texto = "";
 			var ap = "Sin apellido paterno";
 			var am = "Sin apellido materno";
@@ -209,13 +217,57 @@ function validarFormulario() {
 			$('#mensajesModal .modal-body ul').html(texto);
 			$('#mensajesModal .modal-body ul').css("display", "block");
 			$('#mensajesModal .modal-footer .btn-default').html("Regresar");
+			$('#mensajesModal .modal-footer .btn-default').css("display", "inline");
 			$('#mensajesModal .modal-footer .btn-primary').css("display", "inline");
 			$('#mensajesModal').modal();
 			
 			$("#mensajesModal .modal-footer .btn-primary").click(function() {
-				$("#formRegistro").submit();
+				$('#mensajesModal h4.modal-title').html("Guardando...");
+				texto = '<p>Espera un momento mientras guardamos tu información</p>';
+				texto += '<div class="text-center"><img src="images/loading.gif" /></div>';
+				$('#mensajesModal .modal-body ul').html(texto);
+				$('#mensajesModal .modal-footer').css("display", "none");
+				
+				//$("#formRegistro").submit();
+				
+				$.post('registro/guardarRegistro',
+						$("#formRegistro").serialize(),
+						function( data ) {
+							var usr = data;
+							if ( usr == 0 ) {
+								$('#mensajesModal h4.modal-title').html("Error");
+								texto = '<p>Ha ocurrido un error con tu registro. Te pedimos intentarlo nuevamente, ';
+								texto += 'si continuas teniendo problemas puedes comunicarte al teléfono (55) 5322 7700 ext. 4026</p>';
+								$('#mensajesModal .modal-body ul').html(texto);
+								$('#mensajesModal .modal-footer').css("display", "block");
+								$('#mensajesModal .modal-footer .btn-primary').css("display", "none");
+								$('#mensajesModal .modal-footer .btn-default').html("Aceptar");
+								
+								$("#mensajesModal .modal-footer .btn-default").click(function(e) {
+									e.preventDefault();
+									window.location = "/";
+								});
+							} else {
+								$('#mensajesModal h4.modal-title').html("Registro realizado");
+								texto = '<p>Tu registro se ha realizado correctamente.</p>';
+								texto += '<p>En <a href="registro/comprobante/'+usr+'" download="comprobante.pdf">este enlace</a> puedes descargar tu comprobante.</p>';
+								$('#mensajesModal .modal-body ul').html(texto);
+								$('#mensajesModal .modal-footer').css("display", "block");
+								$('#mensajesModal .modal-footer .btn-primary').css("display", "none");
+								$('#mensajesModal .modal-footer .btn-default').html("Aceptar");
+								
+								$("#mensajesModal .modal-footer .btn-default").click(function(e) {
+									e.preventDefault();
+									window.location = "/";
+								});
+							}
+						}
+				);
+				
+				$(this).attr("disabled", "disabled");
 			});
 		} else {
+			$('#mensajesModal .modal-footer .btn-default').css("display", "inline");
 			$('#mensajesModal .modal-footer .btn-primary').css("display", "none");
 			$('#mensajesModal').modal();
 		}
@@ -225,6 +277,7 @@ function validarFormulario() {
 $(function() {
 	evitarCopyPaste();
 	visualizarCampos();
+	cambiarCaptcha();
 	validarApellidos();
 	validarFormulario();
 });

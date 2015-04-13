@@ -30,6 +30,7 @@ $saludo = ($usuario->sexo == 'm') ? "Bienvenido" : "Bienvenida";
 <div class="bienvenida">
 	<h3><?php echo "¡$saludo!"; ?></h3>
 	<p class="nombre"><?php echo trim($usuario->nombre." ".$usuario->ap_paterno." ".$usuario->ap_materno); ?></p>
+	<span class="salir"><a href="<?php echo base_url('login/salir'); ?>">Salir</a></span>
 </div>
 
 <div id="contenido-texto" >
@@ -56,8 +57,13 @@ $saludo = ($usuario->sexo == 'm') ? "Bienvenido" : "Bienvenida";
 	if ( $cursos_disponibles ) {
 		echo '<ul>';
 		foreach ( $cursos_disponibles->result() as $curso ) {
+			// Revisamos si es un curso nuevo para colocarle la imagen correspondiente
+			$clase_estatus = "";
+			if ( $curso->estatus == 2) {
+				$clase_estatus = "nuevo";
+			}
 	?>
-			<li><?php echo $curso->curso; ?> <a data-id="<?php echo $curso->id_curso; ?>" data-curso="<?php echo $curso->curso; ?>"><span class="btn btn-xs btn-primary">Incribirme a este curso</span></a>
+			<li><span class="<?php echo $clase_estatus; ?>"><?php echo $curso->curso; ?></span><a data-id="<?php echo $curso->id_curso; ?>" data-curso="<?php echo $curso->curso; ?>"><span class="btn btn-xs btn-primary">Incribirme a este curso</span></a>
 	<?php
 		}
 		echo '</ul>';

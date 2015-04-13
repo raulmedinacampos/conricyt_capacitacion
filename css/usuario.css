@@ -1,8 +1,9 @@
 /* Hoja de estilos para secciones de usuario */
 .bienvenida {
+	position: relative;
 	padding: 5px 0 4px;
 	margin-bottom: 35px;
-	background-color: #194C85;
+	background-color: #13447D;
 	border-bottom: 5px #F18A1E solid;
 	border-radius: 6px 6px 0 0;
 	box-shadow: 0 2px 12px #000000;
@@ -20,8 +21,71 @@
 	text-align: right;
 }
 
+.salir {
+	position: absolute;
+	right: 128px;
+    top: 50px;
+}
+
+.salir a {
+	color: #F18A1E;
+}
+
 h4.cursos {
 	padding: 3px 0 3px 22px;
-	background-color: #194C85;
+	background-color: #13447D;
 	color: #FFFFFF;
+}
+
+#cursos {
+	margin-bottom: 25px;
+}
+
+#disponibles {
+    margin-bottom: 36px;
+}
+
+#cursos ul, #disponibles ul {
+	list-style: none;
+}
+
+#cursos li, #disponibles li {
+    margin-bottom: 10px;
+}
+
+#cursos ul li:before {
+	content: url("/images/iconos/mis_cursos.png");
+	float: left;
+	margin: 0 10px 0 0;
+}
+
+#cursos ul li:hover:before {
+	content: url("/images/iconos/mis_cursos2.png");
+	float: left;
+	margin: 0 10px 0 0;
+}
+
+#cursos a:hover {
+	color: #F18A1E;
+}
+
+#disponibles ul li:before {
+	content: url("/images/iconos/cursos.png");
+	float: left;
+	margin: 0 10px 0 0;
+}
+
+#disponibles ul li:hover:before {
+	content: url("/images/iconos/cursos2.png");
+	float: left;
+	margin: 0 10px 0 0;
+}
+
+#disponibles ul li > span {
+	margin-right: 20px;
+}
+
+#disponibles span.nuevo:after {
+	content: url("/images/iconos/nuevo2.png");
+	margin: 0 0 0 2px;
 }

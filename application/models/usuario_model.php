@@ -24,7 +24,7 @@
 		}
 		
 		public function consultarCursosDisponibles($usuario) {
-			$this->db->select('c.id_curso, c.curso, c.nombre_corto');
+			$this->db->select('c.id_curso, c.curso, c.nombre_corto, c.estatus');
 			$this->db->from('curso c');
 			$this->db->where('c.id_curso NOT IN(', "SELECT curso FROM usuario_curso WHERE usuario = $usuario)", FALSE);
 			$this->db->where('c.estatus >', 0);

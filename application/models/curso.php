@@ -3,7 +3,7 @@
 		public function listado() {
 			$this->db->select('id_curso, curso, nombre_corto, ruta_imagen');
 			$this->db->from('curso');
-			$this->db->where('estatus', 1);
+			$this->db->where('estatus >', 0);
 			$query = $this->db->get();
 			
 			if($query->num_rows() > 0) {

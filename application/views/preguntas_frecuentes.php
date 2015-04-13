@@ -24,7 +24,7 @@
 		<blockquote><b>Si bien, los cursos del Centro de Capacitación Virtual son autogestivos puedes contactarnos para atender tus dudas por correo electrónico a: <a href="mailto:centro.capacitacion@conricyt.mx">centro.capacitacion@conricyt.mx</a> y a la brevedad daremos solución a tus inquietudes</b></blockquote></p>
 		 
 		<p>¿Si me desmatriculan qué puedo hacer para recuperar el curso?
-		<blockquote><b>Si eres desmaticulado de algún curso, debes realizar nuevamente el registro para ingresar nuevamente al curso y comenzarlo dede el inicio</b></blockquote></p>
+		<blockquote><b>Si eres desmatriculado de algún curso, debes realizar nuevamente el registro para ingresar nuevamente al curso y comenzarlo dede el inicio</b></blockquote></p>
 		
 		<p>¿Es obligatorio que haga la evaluación por módulo y la evaluación final?
 		<blockquote><b>Es impresindible que se realicen las evaluaciones por módulo con un 80% mínimo de reactivos correctos, de lo contrario no podras ingresar al módulo siguiente y consecuentemente a la evaluación final.

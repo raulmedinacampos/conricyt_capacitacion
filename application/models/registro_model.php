@@ -51,7 +51,7 @@ class Registro_model extends CI_Model {
 		$this->db->select("id_curso, curso");
 		$this->db->from("curso");
 		$this->db->where_in("nombre_corto", $cursos);
-		$this->db->where("estatus", 1);
+		$this->db->where("estatus >", 0);
 		$query = $this->db->get();
 		
 		if($query->num_rows() > 0) {
@@ -78,6 +78,17 @@ class Registro_model extends CI_Model {
 		$this->db->where('u.id_usuario', $id);
 		$query = $this->db->get();
 		
+		if($query->num_rows() > 0) {
+			return $query->row_array();
+		}
+	}
+	
+	public function consultarCredencialesPorID($id) {
+		$this->db->select('u.login, u.password');
+		$this->db->from('usuario u');
+		$this->db->where('u.id_usuario', $id);
+		$query = $this->db->get();
+	
 		if($query->num_rows() > 0) {
 			return $query->row_array();
 		}
@@ -162,6 +173,28 @@ class Registro_model extends CI_Model {
 	
 		if($query->num_rows() > 0) {
 			return $query->row();
+		}
+	}
+	
+	public function checkUserEnrollments($user, $enrolid) {
+		$this->db->from('mdl_user_enrolments');
+		$this->db->where('userid', $user);
+		$this->db->where('enrolid', $enrolid);
+		$query = $this->db->get();
+	
+		if($query->num_rows() > 0) {
+			return true;
+		}
+	}
+	
+	public function checkRoleAssignments($user, $contexid) {
+		$this->db->from('mdl_role_assignments');
+		$this->db->where('userid', $user);
+		$this->db->where('contextid', $contexid);
+		$query = $this->db->get();
+	
+		if($query->num_rows() > 0) {
+			return true;
 		}
 	}
 	

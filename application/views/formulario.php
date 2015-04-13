@@ -32,7 +32,7 @@ $(function() {
 </div>
 
 <div id="contenido-texto">
-	<p>Debes llenar cuidadosamente cada campo con la información que se solicita con los datos correctos, ya que si deseas obtener la Constancia de Terminación del Curso, tu nombre aparecerá tal como lo ingreses en el formulario.</p>
+	<p>Debes llenar cuidadosamente cada campo con la información que se solicita, ya que si deseas obtener la Constancia de Terminación del Curso, tu nombre aparecerá tal como lo ingreses en el formulario.</p>
 	
 	<p>Una vez que hayas concluido tu registro, se te enviará por correo electrónico tu clave de usuario y contraseña. Para ingresar a los cursos seleccionados, debes colocar las contraseñas en la sección que lo solicita.</p>
 	
