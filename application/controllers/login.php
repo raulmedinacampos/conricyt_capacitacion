@@ -19,6 +19,28 @@ class Login extends CI_Controller {
 		}
 	}
 	
+	public function entrar() {
+		$this->load->model("registro_model", "registro", TRUE);
+		
+		$data['login'] = addslashes($this->input->post('usr_modal'));
+		$data['password'] = addslashes($this->input->post('pass_modal'));
+		$curso = addslashes($this->input->post('curso_modal'));
+		
+		$usuario = $this->login->verificarUsuario($data);
+		
+		if ( $usuario ) {
+			$this->session->set_userdata('usuario', $usuario->id_usuario);
+			
+			if ( $this->registro->verificarUsuarioEnCurso($usuario->id_usuario, $curso) ) {
+				echo "ok";
+			} else {
+				echo "reg";
+			}
+		} else {
+			echo "error";
+		}
+	}
+	
 	public function salir() {
 		$this->session->sess_destroy();
 		

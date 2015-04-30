@@ -111,7 +111,7 @@
       <!-- -->
       <div id="listado" style=" position:relative; float:left; width:100%; text-align: left; color:#333; padding:5px; "> <?php echo $this->session->userdata('cursos_seleccionados'); ?> </div>
       <!-- -->
-      <input type="submit" value="Registrarme" id="btn_registrarme" name="btn_registrarme">
+      <input type="submit" value="Registrarme" id="btn_registrarme" name="btn_registrarme" class="btn btn-warning btn-sm" />
       &nbsp;&nbsp;
     </form>
     <br>

@@ -6,7 +6,17 @@ class Registro extends CI_Controller {
 	}
 	
 	public function index() {
-		$this->load->helper('form');
+		$this->load->model("curso", "", TRUE);
+		
+		if ( $this->session->userdata('usuario') ) {
+			$this->load->model('usuario_model', 'usuario', TRUE);
+			$id_usuario = $this->session->userdata('usuario');
+			$header['menu'] = $this->usuario->consultarCursosInscritos($id_usuario);
+			$header['usuario'] = $this->usuario->consultarUsuarioPorID($id_usuario);
+		} else {
+			$this->load->model('curso', '', TRUE);
+			$header['menu'] = $this->curso->listado();
+		}
 		
 		$cseleccionados = $this->input->post('cursos');
 		$cursos = "";
@@ -107,13 +117,19 @@ class Registro extends CI_Controller {
 			}
 		}
 		
+		/*
+		 * Quitar esta parte
+		 */
+		$cursos = $this->curso->listado();
+		$cursos = $cursos->result();
+		
 		$data['paises'] = $paises_arr;
 		$data['entidades'] = $entidades;
 		$data['perfiles'] = $perfiles_arr;
 		$data['instituciones'] = $instituciones_arr;
 		$data['cursos'] = $cursos;
 		
-		$this->load->view('header');
+		$this->load->view('header', $header);
 		$this->load->view('formulario', $data);
 		$this->load->view('footer');
 	}
@@ -139,7 +155,7 @@ class Registro extends CI_Controller {
 		$nombre_completo = trim($nombre." ".$ap_paterno." ".$ap_materno);
 		$institucion = utf8_decode(trim($data['institucion']));
 			
-		$header = '<p class="header"><img src="'.base_url().'images/header_pdf.jpg" /></p>';
+		$header = '<p class="header"><img src="http://127.0.0.1/images/header_pdf.jpg" /></p>';
 		$footer = '<p class="footer"><strong>Oficina del Consorcio Nacional de Recursos de Información Científica y Tecnológica</strong><br />Av. Insurgentes Sur 1582, Col. Crédito Constructor, Del. Benito Juárez, C.P. 03940 México D.F. – Tel: 5322 7700 ext. 4020 a la 4026</p>';
 		$html = '<div class="contenido">';
 		$html .= '<p class="titulo2">Consorcio Nacional de Recursos de Información Científica y Tecnológica</p>';
@@ -160,7 +176,7 @@ class Registro extends CI_Controller {
 		$html .= '<p>Para cualquier duda, comentario o sugerencia, escribe a centro.capacitacion@conricyt.mx o llámanos al (55) 5322 7700 ext. 4020 a la 4026.</p>';
 			
 		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, base_url('css/pdf.css'));
+		curl_setopt($ch, CURLOPT_URL, 'http://localhost/css/pdf.css');
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		$stylesheet = curl_exec($ch);
 		curl_close($ch);
@@ -220,43 +236,6 @@ class Registro extends CI_Controller {
 			//echo "Error al enviar correo: " . $this->phpmailer->ErrorInfo;
 		} else {
 			//echo "Correo enviado";
-		}
-	}
-	
-	public function probarCorreo() {
-		$this->load->library('phpmailer');
-	
-		$this->phpmailer->IsSMTP();
-		$this->phpmailer->SMTPDebug  = 1;
-		$this->phpmailer->SMTPAuth   = true;					// activa autenticación
-		$this->phpmailer->Host       = "74.125.136.108";		// servidor de correo
-		//$this->phpmailer->Host       = "smtp.gmail.com";		// servidor de correo
-		$this->phpmailer->Port       = 465;                     // puerto de salida que usa Gmail
-		$this->phpmailer->SMTPSecure = 'ssl';					// protocolo de autenticación
-		$this->phpmailer->Username   = "conricyt@gmail.com";
-		$this->phpmailer->Password   = 'C0nR1c17p1x3l8lu3';
-	
-		$this->phpmailer->SetFrom('conricyt@gmail.com', 'CONRICyT');
-		$this->phpmailer->AddReplyTo('no-replay@conacyt.mx', 'CONRICyT');
-		$this->phpmailer->Subject    = utf8_encode("Prueba");
-		$this->phpmailer->AltBody    = utf8_encode("Prueba");
-	
-		$this->phpmailer->MsgHTML("Correo de prueba");
-	
-		$this->phpmailer->AddAddress("raulmedinacampos@hotmail.com", "Raúl Medina");
-			
-		$data = "";
-	
-		// Se adjuntan los archivos PDF
-		$this->phpmailer->AddStringAttachment($this->crearComprobante(3),'comprobante.pdf');
-		$this->phpmailer->AddAttachment('pdf/terminos_y_condiciones.pdf');
-	
-		$this->phpmailer->CharSet = 'UTF-8';
-	
-		if(!$this->phpmailer->Send()) {
-			echo "Error al enviar correo: " . $this->phpmailer->ErrorInfo;
-		} else {
-			echo "Correo enviado";
 		}
 	}
 	

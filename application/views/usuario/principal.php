@@ -4,7 +4,7 @@ $(function() {
 		e.preventDefault();
 
 		var id = $(this).data("id");
-		window.open("<?php echo base_url('acceso/verificarAcceso'); ?>/"+id);
+		window.location = "<?php echo base_url('acceso/verificarAcceso'); ?>/"+id;
 	});
 	
 	$("#disponibles a").click(function() {
@@ -29,8 +29,8 @@ $saludo = ($usuario->sexo == 'm') ? "Bienvenido" : "Bienvenida";
 ?>
 <div class="bienvenida">
 	<h3><?php echo "¡$saludo!"; ?></h3>
-	<p class="nombre"><?php echo trim($usuario->nombre." ".$usuario->ap_paterno." ".$usuario->ap_materno); ?></p>
-	<span class="salir"><a href="<?php echo base_url('login/salir'); ?>">Salir</a></span>
+	<!-- <p class="nombre"><?php echo trim($usuario->nombre." ".$usuario->ap_paterno." ".$usuario->ap_materno); ?></p>
+	<span class="salir"><a href="<?php echo base_url('login/salir'); ?>">Salir</a></span> -->
 </div>
 
 <div id="contenido-texto" >

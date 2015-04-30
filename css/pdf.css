@@ -17,7 +17,7 @@ ul {
 }
 
 .contenido {
-	background: url(../images/fondo_pdf.jpg) no-repeat center 60pt;
+	background: url("http://127.0.0.1/images/fondo_pdf.jpg") no-repeat center 60pt;
 }
 
 .titulo1, .titulo2 {

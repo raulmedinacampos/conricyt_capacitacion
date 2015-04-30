@@ -10,14 +10,6 @@ function obtenerImagen() {
 
 $(function() {
 	obtenerImagen();
-	<?php
-	if ( !$cursos ) {
-	?>
-		$("#formRegistro input, #formRegistro select").attr("disabled", "disabled");
-		$("#notificaciones").modal('show');
-	<?php
-	}
-	?>
 });
 </script>
 
@@ -135,7 +127,7 @@ echo '<div class="form-group">';
 echo form_label('Sexo:', '', array('class' => 'col-xs-8'));
 
 $opt = array(
-		''	=>	'Seleccione',
+		''	=>	'Selecciona',
 		'm'	=>	'Masculino',
 		'f'	=>	'Femenino'
 );
@@ -147,7 +139,7 @@ echo '</div>';
 echo '<div class="form-group">';
 echo form_label('País:', '', array('class' => 'col-xs-8'));
 
-$opt = array('' => 'Seleccione');
+$opt = array('' => 'Selecciona');
 
 foreach($paises as $pais) {
 	$opt[$pais->id_pais] = $pais->pais;
@@ -161,7 +153,7 @@ echo '</div>';
 echo '<div class="form-group entidad">';
 echo form_label('Entidad:', '', array('class' => 'col-xs-8'));
 
-$opt = array('' => 'Seleccione');
+$opt = array('' => 'Selecciona');
 
 foreach($entidades as $entidad) {
 	$opt[$entidad->id_entidad] = $entidad->entidad;
@@ -175,7 +167,7 @@ echo '</div>';
 echo '<div class="form-group">';
 echo form_label('Perfil:', '', array('class' => 'col-xs-8'));
 
-$opt = array('' => 'Seleccione');
+$opt = array('' => 'Selecciona');
 
 foreach($perfiles as $perfil) {
 	$opt[$perfil->id_perfil] = $perfil->perfil;
@@ -202,7 +194,7 @@ echo '</div>';
 echo '<div class="form-group">';
 echo form_label('Institución:', '', array('class' => 'col-xs-8'));
 
-$opt = array('' => 'Seleccione');
+$opt = array('' => 'Selecciona');
 
 foreach($instituciones as $institucion) {
 	$opt[$institucion->id_institucion] = $institucion->institucion;
@@ -226,10 +218,10 @@ echo form_input($attr);
 echo '</div>';
 echo '</div>';
 
+echo '<div class="form-group cursos">';
+echo form_label('Elije los cursos a los que quieres inscribirte:', '', array('class' => 'col-xs-8'));
+
 if ( $cursos ) {
-	echo '<div class="form-group cursos">';
-	echo form_label('Elije los cursos a los que quieres inscribirte', '', array('class' => 'col-xs-8'));
-	
 	foreach ($cursos as $curso) {
 		$attr = array(
 				'id'	=>	'chk_curso_'.$curso->id_curso,
@@ -240,9 +232,18 @@ if ( $cursos ) {
 		
 		echo form_label(form_checkbox($attr).' '.$curso->curso, '', array('class' => 'col-xs-6'));
 	}
-	
-	echo '</div>';
 }
+
+$opt = array('' => 'Selecciona');
+
+foreach($cursos as $c) {
+	$opt[$c->id_curso] = $c->curso;
+}
+
+echo '<div class="col-xs-8">';
+echo form_dropdown('curso', $opt, '', 'id="curso" class="form-control"');
+echo '</div>';
+echo '</div>';
 
 echo '<div class="form-group">';
 $attr = array(
@@ -287,19 +288,17 @@ echo form_button($attr);
 echo '</div>';
 echo '</div>';
 
-if ( $cursos ) {
-	echo '<div class="form-group">';
-	$attr = array(
-			'id'	=>	'btnEnviar',
-			'name'	=>	'btnEnviar',
-			'content'=>	'Enviar',
-			'class'	=>	'btn btn-primary'
-	);
-	echo '<div class="col-xs-8" style="margin-top:10px;">';
-	echo form_button($attr);
-	echo '</div>';
-	echo '</div>';
-}
+echo '<div class="form-group">';
+$attr = array(
+		'id'	=>	'btnEnviar',
+		'name'	=>	'btnEnviar',
+		'content'=>	'Enviar',
+		'class'	=>	'btn btn-primary'
+);
+echo '<div class="col-xs-8" style="margin-top:10px;">';
+echo form_button($attr);
+echo '</div>';
+echo '</div>';
 
 echo form_close();
 ?>
@@ -322,22 +321,6 @@ echo form_close();
         <button type="button" class="btn btn-primary">Enviar registro</button>
       </div>
     </div>
-  </div>
-</div>
-
-<!-- Ventana modal de notificaciones para seleccionar cursos -->
-<div class="modal fade bs-example-modal-sm" id="notificaciones" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h4 class="modal-title">Registrarse</h4>
-          </div>
-          <div class="modal-body">Favor de primero seleccionar los cursos a los que te quieres inscribir.
-          </div>
-          <div class="modal-footer">
-            <a href="<?php echo base_url('cursos'); ?>"><button type="button" class="btn btn-primary">Ir a los cursos</button></a>
-          </div>
-      </div>
   </div>
 </div>
 

@@ -1,19 +1,42 @@
-<script	src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=false&language=es"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&signed_in=false&language=es"></script>
 <script>
 function initialize() {
-  var myLatlng = new google.maps.LatLng(19.364601, -99.181830);
-  
-  var mapOptions = {
-    zoom: 16,
-    center: myLatlng
-  };
-  var map = new google.maps.Map(document.getElementById('mapa-ubicacion'), mapOptions);
+	var myLatlng = new google.maps.LatLng(19.364601, -99.181830);
+	
+	var mapOptions = {
+		zoom: 16,
+		center: myLatlng
+	};
 
-  var marker = new google.maps.Marker({
-      position: myLatlng,
-      map: map,
-      title: 'CONRICYT'
-  });
+	var map = new google.maps.Map(document.getElementById('mapa-ubicacion'), mapOptions);
+
+	var infowindow;
+
+	var request = { placeId: 'ChIJDZOUBPf_0YURnWxSmr_tkao' };
+
+		service = new google.maps.places.PlacesService(map);
+		service.getDetails(request, callback);
+
+		infowindow = new google.maps.InfoWindow({maxWidth:200});
+
+		function createMarker(placeMarker) {
+	        var marker = new google.maps.Marker({
+	            map: map,
+	            position: placeMarker.geometry.location
+	        });
+
+	        var info = "<h6>"+placeMarker.name+"</h6>";
+	        info += "<p>"+placeMarker.adr_address+"</p>";
+	        info += "<p>"+placeMarker.formatted_phone_number+"</p>";
+            infowindow.setContent(info);
+            infowindow.open(map, marker);
+	    }
+
+		function callback(place, status) {
+		  if (status == google.maps.places.PlacesServiceStatus.OK) {
+		    createMarker(place);
+		  }
+		}
   
 }
 

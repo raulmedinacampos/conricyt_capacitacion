@@ -7,7 +7,7 @@
          </div>
          
          <br><br>
-         <div id="contenido-texto" >
+         <div id="contenido-texto" class="faq">
          <p>¿Cuáles son los requisitos técnicos que necesito para navegar en la plataforma del Centro de Capacitación Virtual?
 		<blockquote><b>Es importante contar con el navegador de tu preferencia actualizado o de preferencia Google Chrome, así como de un lector para formatos en PDF y tener actualizado JAVA para los vídeo que en algunos casos las editoriales proprocionan.</b></blockquote></p>
 		

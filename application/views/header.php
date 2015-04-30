@@ -16,6 +16,29 @@
 <!-- Scripts (jQuery y Bootstrap) -->
 <script type="text/javascript" src="<?php echo base_url('scripts/jquery-1.11.0.min.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('scripts/bootstrap.min.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('scripts/login.js'); ?>"></script>
+
+<script type="text/javascript">
+$(function() {
+	$(".cursos-menu a").click(function(e) {
+		var id = $(this).data("id");
+		<?php
+		if( $this->session->userdata('usuario') ) {
+		?>
+		e.preventDefault();
+
+		window.location = "<?php echo base_url('acceso/verificarAcceso'); ?>/"+id;
+		<?php
+		} else {
+		?>
+			$("#modalLogin #curso_modal").val(id);
+			$("#modalLogin").modal('show');
+		<?php
+		}
+		?>
+	});
+});
+</script>
 </head>
 
 <body>
@@ -94,13 +117,21 @@
 
 				<div id="banner-login">
 					<form action="<?php echo base_url('login'); ?>" method="post" id="logeo">
-
 						<div id="banner-login-2">
-
+							<?php
+							if ( !$this->session->userdata('usuario') ) {
+							?>
 							<label>usuario </label> <input type="text" id="usuario" name="usuario" />
 							<label>clave </label> <input type="password" id="password" name="password" />
 							<label>&nbsp;</label> <input type="submit" value="Enviar" id="enviar">&nbsp;&nbsp;
-
+							<?php
+							} else {
+							?>
+							<p class="nombre"><?php echo trim($usuario->nombre." ".$usuario->ap_paterno." ".$usuario->ap_materno); ?></p>
+							<span class="salir"><a href="<?php echo base_url('login/salir'); ?>">Salir</a></span>
+							<?php
+							}
+							?>
 						</div>
 
 					</form>
@@ -120,115 +151,60 @@
 
 			<!-- menu -->
 			<div id="menu">
-
-				<!--boton 1-->
-				<div id="boton1" class="boton"
-					onClick="window.location.href='<?php echo base_url(); ?>inicio'">
-
-					<div class="boton-icono">
-						<img src="<?php echo base_url('images/nav-iconos.png'); ?>"
-							class="boton-icono-img1">
-					</div>
-					<div class="boton-capa-texto">
-						<span class="boton-texto1">Inicio</span><br> <span
-							class="boton-texto2">Acerca de</span>
-					</div>
-
-				</div>
-
-
-				<!--boton 2-->
-				<div id="boton2" class="boton"
-					onClick="window.location.href='<?php echo base_url(); ?>cursos'">
-
-					<div class="boton-icono">
-						<img src="<?php echo base_url(); ?>images/nav-iconos.png"
-							class="boton-icono-img2">
-					</div>
-					<div class="boton-capa-texto">
-						<span class="boton-texto1">Información </span><br> <span
-							class="boton-texto2">de los cursos </span>
-					</div>
-
-				</div>
-
-				<!--boton 3-->
-				<div id="boton3" class="boton"
-					onClick="window.location.href='<?php echo base_url(); ?>registro'">
-
-					<div class="boton-icono">
-						<img src="<?php echo base_url(); ?>images/nav-iconos.png"
-							class="boton-icono-img3">
-					</div>
-					<div class="boton-capa-texto">
-						<span class="boton-texto1">Regístrate</span><br> <span
-							class="boton-texto2">y participa</span>
-					</div>
-
-				</div>
-
-				<!--boton 4-->
-				<div id="boton4" class="boton"
-					onClick="window.location.href='<?php echo base_url(); ?>guias-de-uso'">
-
-					<div class="boton-icono">
-						<img src="<?php echo base_url(); ?>images/nav-iconos.png"
-							class="boton-icono-img4">
-					</div>
-					<div class="boton-capa-texto">
-						<span class="boton-texto1">Guías</span><br> <span
-							class="boton-texto2">de uso</span>
-					</div>
-
-				</div>
-
-				<!--boton 5-->
-				<!--<div class="boton" onClick="window.location.href='<?php echo base_url(); ?>instituciones'">
-         
-         <div class="boton-icono" >
-         <img src="<?php //echo base_url(); ?>images/nav-iconos.png" class="boton-icono-img5" >
-         </div>
-         <div class="boton-capa-texto"><span class="boton-texto1">Instituciones</span><br><span class="boton-texto2" >que participan</span> </div>
-         
-          </div>-->
-
-				<!--boton 6-->
-				<div id="boton5" class="boton"
-					onClick="window.location.href='<?php echo base_url(); ?>preguntas-frecuentes'">
-
-					<div class="boton-icono">
-						<img src="<?php echo base_url(); ?>images/nav-iconos.png"
-							class="boton-icono-img6">
-					</div>
-					<div class="boton-capa-texto">
-						<span class="boton-texto1">Preguntas</span><br> <span
-							class="boton-texto2">frecuentes</span>
-					</div>
-
-				</div>
-
-				<!--boton 7-->
-				<div id="boton6" class="boton-ultimo"
-					onClick="window.location.href='<?php echo base_url(); ?>contacto'">
-
-					<div class="boton-icono">
-						<img src="<?php echo base_url(); ?>images/nav-iconos.png"
-							class="boton-icono-img7">
-					</div>
-					<div class="boton-capa-texto">
-						<span class="boton-texto1">Contacto</span><br> <span
-							class="boton-texto2"></span>
-					</div>
-
-				</div>
-
-
-
+			<nav class="navbar navbar-default">
+				<div class="container-fluid">
+			    <!-- Menú colapsado para resoluciones pequeñas -->
+			    <div class="navbar-header">
+			      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+			        <span class="sr-only">Mostrar/ocultar menú</span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			      </button>
+			      <a class="navbar-brand visible-xs-block" href="#">Menú principal</a>
+			    </div>
+			
+			    <!-- Elmentos del menú -->
+			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			      <ul class="nav navbar-nav">
+			        <li class="active"><a href="<?php echo base_url('inicio'); ?>">Presentación <span class="sr-only">(current)</span></a></li>
+			        <?php
+					if ( $this->session->userdata('usuario') ) {
+					?>
+					<li><a href="<?php echo base_url('usuario'); ?>">Mi perfil</a></li>
+					<?php
+					}
+					?>
+					<li><a href="<?php echo base_url('guias-de-uso'); ?>">Guías de uso</a></li>
+			        <li class="dropdown">
+			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Cursos <span class="caret"></span></a>
+			          <ul class="dropdown-menu" role="menu">
+			          	<?php
+			          	if ( $menu ) {
+				          	foreach ( $menu->result() as $val ) {
+				          	?>
+				            <li class="cursos-menu"><a href="#" data-id="<?php echo $val->id_curso; ?>"><?php echo $val->curso; ?></a></li>
+				            <?php
+				          	}
+			          	}
+			          	?>
+			            <?php
+						if ( $this->session->userdata('usuario') ) {
+						?>
+			            <li class="divider"></li>
+			            <li><a href="<?php echo base_url('usuario'); ?>">Cursos disponibles</a></li>
+			            <?php
+						}
+			            ?>
+			          </ul>
+			        </li>
+			        <li><a href="<?php echo base_url('preguntas-frecuentes'); ?>">Preguntas frecuentes</a></li>
+			        <li><a href="<?php echo base_url('contacto'); ?>">Contacto</a></li>
+			      </ul>
+			    </div><!-- /.navbar-collapse -->
+			  </div><!-- /.container-fluid -->
+			</nav>
 			</div>
-			<!-- Fin menu -->
-
-
-
 		</header>
 
 
