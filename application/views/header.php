@@ -1,3 +1,7 @@
+<?php
+$ctrl = $this->router->fetch_class();
+?>
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -167,15 +171,15 @@ $(function() {
 			    <!-- Elmentos del menú -->
 			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			      <ul class="nav navbar-nav">
-			        <li class="active"><a href="<?php echo base_url('inicio'); ?>">Presentación <span class="sr-only">(current)</span></a></li>
+			        <li <?php if($ctrl == "inicio") {echo 'class="active"'; } ?>><a href="<?php echo base_url('inicio'); ?>">Presentación <span class="sr-only">(current)</span></a></li>
 			        <?php
 					if ( $this->session->userdata('usuario') ) {
 					?>
-					<li><a href="<?php echo base_url('usuario'); ?>">Mi perfil</a></li>
+					<li <?php if($ctrl == "usuario") {echo 'class="active"'; } ?>><a href="<?php echo base_url('usuario'); ?>">Mi perfil</a></li>
 					<?php
 					}
 					?>
-					<li><a href="<?php echo base_url('guias-de-uso'); ?>">Guías de uso</a></li>
+					<li <?php if($ctrl == "guias_de_uso") {echo 'class="active"'; } ?>><a href="<?php echo base_url('guias-de-uso'); ?>">Guías de uso</a></li>
 			        <li class="dropdown">
 			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Cursos <span class="caret"></span></a>
 			          <ul class="dropdown-menu" role="menu">
@@ -198,8 +202,8 @@ $(function() {
 			            ?>
 			          </ul>
 			        </li>
-			        <li><a href="<?php echo base_url('preguntas-frecuentes'); ?>">Preguntas frecuentes</a></li>
-			        <li><a href="<?php echo base_url('contacto'); ?>">Contacto</a></li>
+			        <li <?php if($ctrl == "preguntas_frecuentes") {echo 'class="active"'; } ?>><a href="<?php echo base_url('preguntas-frecuentes'); ?>">Preguntas frecuentes</a></li>
+			        <li <?php if($ctrl == "contacto") {echo 'class="active"'; } ?>><a href="<?php echo base_url('contacto'); ?>">Contacto</a></li>
 			      </ul>
 			    </div><!-- /.navbar-collapse -->
 			  </div><!-- /.container-fluid -->

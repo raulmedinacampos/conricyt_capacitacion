@@ -46,6 +46,39 @@ function cambiarCaptcha() {
 	});
 }
 
+// Agregar los checkbox de los cursos seleccionados
+function agregarCurso() {
+	$("#cmb_curso option").click(function() {
+		var elemento = $(this);
+		
+		if ( elemento.val() != "" ) {
+			elemento.css("display", "none");
+			
+			var chk = '<label class="col-xs-6">';
+			chk += '<input id="chk_curso_'+elemento.val()+'" type="checkbox" checked="checked" value="'+elemento.val()+'" name="cursos[]"> ';
+			chk += elemento.text();
+			chk += '</label>';
+			
+			$("#cmb_curso").val("");
+			
+			$("#div-cursos").append(chk);
+			
+			$("#div-cursos input").click(function() {
+				var curso = $(this);
+				
+				if( !curso.is(":checked") ) {
+					$("#cmb_curso option").each(function() {
+						if( $(this).val() == curso.val() ) {
+							$(this).css("display", "block");
+						}
+					});
+					curso.parent("label").remove();
+				}
+			});
+		}
+	});
+}
+
 // Validación de los apellidos. Puede no tener paterno o materno, el otro es obligatorio.
 function validarApellidos() {
 	$("#chkApPaterno, #chkApMaterno").click(function() {
@@ -278,6 +311,7 @@ $(function() {
 	evitarCopyPaste();
 	visualizarCampos();
 	cambiarCaptcha();
+	agregarCurso();
 	validarApellidos();
 	validarFormulario();
 });

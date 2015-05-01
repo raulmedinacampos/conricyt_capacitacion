@@ -220,8 +220,9 @@ echo '</div>';
 
 echo '<div class="form-group cursos">';
 echo form_label('Elije los cursos a los que quieres inscribirte:', '', array('class' => 'col-xs-8'));
+echo '<div id="div-cursos">';
 
-if ( $cursos ) {
+/*if ( $cursos ) {
 	foreach ($cursos as $curso) {
 		$attr = array(
 				'id'	=>	'chk_curso_'.$curso->id_curso,
@@ -232,7 +233,9 @@ if ( $cursos ) {
 		
 		echo form_label(form_checkbox($attr).' '.$curso->curso, '', array('class' => 'col-xs-6'));
 	}
-}
+}*/
+
+echo '</div>';
 
 $opt = array('' => 'Selecciona');
 
@@ -241,7 +244,7 @@ foreach($cursos as $c) {
 }
 
 echo '<div class="col-xs-8">';
-echo form_dropdown('curso', $opt, '', 'id="curso" class="form-control"');
+echo form_dropdown('cmb_curso', $opt, '', 'id="cmb_curso" class="form-control"');
 echo '</div>';
 echo '</div>';
 

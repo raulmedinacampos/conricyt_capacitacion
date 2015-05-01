@@ -14,8 +14,8 @@ class Acceso extends CI_Controller {
 		$curso = $this->registro->getMoodleCourse($shortname->nombre_corto);
 		$usuario = $this->acceso->getDataByID($this->session->userdata('usuario'));
 		
-		//$ruta_login = 'http://capacitacion.conricyt.mx/moodle/login/index.php?id='.$curso->id;
-		$ruta_login = 'http://moodle.dev/login/index.php?id='.$curso->id;
+		$ruta_login = 'http://capacitacion.conricyt.mx/moodle/login/index.php?id='.$curso->id;
+		//$ruta_login = 'http://moodle.dev/login/index.php?id='.$curso->id;
 		
 		echo '<script type="text/javascript" src="'.base_url('scripts/jquery-1.11.0.min.js').'"></script>';
 		

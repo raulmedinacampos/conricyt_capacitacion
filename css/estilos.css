@@ -56,7 +56,7 @@ blockquote {border-left: 4px solid #CCCCCC; font-size: 14px;}
 
 #banner-login .nombre { margin:0 15px; min-height:50px; color:#766a63; }
 
-#banner-login .salir { background:url('../images/icono_salir.png') no-repeat 30px 3px; position:static; margin-left:15px; padding:5px 0; font-size:12px; }
+#banner-login .salir { background:url('../images/icono_salir.png') no-repeat 30px 3px; position:static; float:right; margin-right:15px; padding:5px 0; font-size:12px; }
 
 #banner-login .salir a { color:#94877F; padding:2px 30px 2px 0; }
 
@@ -98,9 +98,19 @@ blockquote {border-left: 4px solid #CCCCCC; font-size: 14px;}
 
 #menu {margin: 20px auto 0; max-width: 960px;}
 
-/*#menu .navbar-default {background-color:#D9EDF7; border-color: #337AB7;}
+#menu .navbar-default{ background-color:#024A7B; border: none; }
 
-#menu .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {background-color: #99c2e3; color: #555;}*/
+#menu .navbar-default .navbar-nav > li > a{ color: #FFFFFF; }
+
+#menu .navbar-default .navbar-nav > li > a:focus, #menu .navbar-default .navbar-nav > li > a:hover{ background-color: #002741; color: #FF7300; }
+
+#menu .navbar-default .navbar-nav > .active > a, #menu .navbar-default .navbar-nav > .active > a:focus, #menu .navbar-default .navbar-nav > .active > a:hover, #menu .navbar-default .navbar-nav > .open > a, #menu .navbar-default .navbar-nav > .open > a:focus, #menu .navbar-default .navbar-nav > .open > a:hover { background-color: #002741; color: #FFFFFF; }
+
+#menu .dropdown-menu { background-color:#002741; border-color:#002741; }
+
+#menu .dropdown-menu > li > a { color:#FFFFFF; }
+
+#menu .dropdown-menu > li > a:focus, #menu .dropdown-menu > li > a:hover { background-color: #024A7B; color: #FFFFFF; }
 
 .boton{position:relative; float:left; margin-right:28px; width:136px; min-height:107px; max-height:107px; background-color:#069; -webkit-border-radius:8px; -moz-border-radius:8px; border-radius:8px;  box-shadow: 3px 3px 8px #000; cursor:pointer;    background: -webkit-linear-gradient( #5ea8dc, #002b65); background: -moz-linear-gradient( #5ea8dc, #002b65); background: -o-linear-gradient( #5ea8dc, #002b65); font-family:Verdana, Geneva, sans-serifM; color:#FFF; }
 
@@ -179,6 +189,8 @@ h1{  font-family: 'Scada', Verdana, sans-serif; font-weight:700; margin:0px; top
 .curso-bloque{position:relative; float:left; top:0px; left:0px; margin:0 0 10px 10px; width:150px; height:150px; border:#999999 4px solid; border-radius:8px;  box-shadow: 3px 3px 8px #000; background-color:#FFFFFF;}
 
 .curso-bloque > img{ width:100%; cursor:pointer; }
+
+.img_grayscale{ cursor:pointer; }
 
 .curso-bloque .seleccionarCurso {display:block; margin-top:-5px;}
 
