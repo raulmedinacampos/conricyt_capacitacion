@@ -1,9 +1,10 @@
 <?php
 	class Curso extends CI_Model {
 		public function listado() {
-			$this->db->select('id_curso, curso, nombre_corto, ruta_imagen');
+			$this->db->select('id_curso, curso, nombre_corto, ruta_imagen, descripcion');
 			$this->db->from('curso');
 			$this->db->where('estatus >', 0);
+			$this->db->order_by('curso');
 			$query = $this->db->get();
 			
 			if($query->num_rows() > 0) {
@@ -194,6 +195,35 @@
 			}
 			
 			return $estatus;
+		}
+		
+		public function obtenerCalificacionCurso($id) {
+			$this->db->select('nombre_corto');
+			$this->db->from('curso');
+			$this->db->where('id_curso', $id);
+			$query = $this->db->get();
+			$row = $query->row();
+			$shortname = ($row) ? $row->nombre_corto : "";
+			
+			$this->db->select('id');
+			$this->db->from('mdl_course');
+			$this->db->where('shortname', $shortname);
+			$query = $this->db->get();
+			$row = $query->row();
+			$id_curso = ($row) ? $row->id : -1;
+
+			$this->db->select('AVG(CAST(fv.value AS integer)) AS valor', FALSE);
+			$this->db->from('mdl_feedback_value fv');
+			$this->db->join('mdl_feedback_item fi', 'fv.item = fi.id');
+			$this->db->join('mdl_feedback f', 'fi.feedback = f.id');
+			$this->db->where('fv.completed', 1);
+			$this->db->where('f.course', $id_curso);
+			$query = $this->db->get();
+			
+			if ( $query->num_rows() > 0 ) {
+				$row = $query->row();
+				return $row->valor;
+			}
 		}
 	}
 ?>

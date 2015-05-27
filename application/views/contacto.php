@@ -57,13 +57,20 @@ google.maps.event.addDomListener(window, 'load', initialize);
 <br>
 <br>
 <div id="contenido-texto">
-	Oficina del Consorcio Nacional de Recursos de Información Científica y
+	<p>Oficina del Consorcio Nacional de Recursos de Información Científica y
 	Tecnológica <br /> Av. Insurgentes Sur 1582 <br /> Col. Crédito
-	Constructor, Deleg. Benito Juárez <br /> C.P. 03940 México, D.F <br />
-	<hr />
+	Constructor, Deleg. Benito Juárez <br /> C.P. 03940 México, D.F.</p>
 
-	Tel: 5322 7700 <br /> ext 4020 al 4026 <br /> consorcio@conacyt.mx <br />
-	http://www.conricyt.mx <br /> <br />
+	<p>E-mail: centro.capacitacion@conricyt.mx<br />
+	Sitio web: <a href="http://www.conricyt.mx/" target="_blank">www.conricyt.mx</a><br />
+	Tel: (01 55) 5322 7700<br />
+	Ext. 4020 a la 4026</p>
+	
+	<p><strong>Redes Sociales</strong><br />
+	<a href="https://www.facebook.com/CONRICYT" target="_blank">Facebook</a><br />
+	<a href="https://www.youtube.com/user/CONRICYT" target="_blank">YouTube</a><br />
+	<a href="https://twitter.com/CONRICYT" target="_blank">Twitter</a><br />
+	<a href="http://blog.conricyt.mx/" target="_blank">Blog CONRICyT</a></p>
 	<div id="mapa-ubicacion"></div>
 	
 

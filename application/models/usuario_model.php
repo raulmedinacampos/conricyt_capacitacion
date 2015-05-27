@@ -12,10 +12,11 @@
 		}
 		
 		public function consultarCursosInscritos($usuario) {
-			$this->db->select('c.id_curso, c.curso, c.nombre_corto, c.ruta_imagen');
+			$this->db->select('c.id_curso, c.curso, c.nombre_corto, c.ruta_imagen, c.descripcion');
 			$this->db->from('usuario_curso uc');
 			$this->db->join('curso c', 'uc.curso = c.id_curso');
 			$this->db->where('uc.usuario', $usuario);
+			$this->db->order_by('c.curso');
 			$query = $this->db->get();
 			
 			if ( $query->num_rows() > 0 ) {

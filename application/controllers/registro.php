@@ -271,15 +271,17 @@ class Registro extends CI_Controller {
 		}
 		
 		// Bucle para insertar cada uno de los cursos seleccionados
-		foreach ( $cursos as $val ) {
-			$datos['usuario'] = $id_usuario;
-			$datos['curso'] = $val;
-			$datos['fecha_inscripcion'] = date('Y-m-d H:i:s');
-			
-			
-			// Revisa que el usuario no esté ya registrado
-			if ( !$this->registro->verificarUsuarioEnCurso($id_usuario, $val) ) {
-				$this->registro->insertarUsuarioCurso($datos);
+		if ( $cursos ) {
+			foreach ( $cursos as $val ) {
+				$datos['usuario'] = $id_usuario;
+				$datos['curso'] = $val;
+				$datos['fecha_inscripcion'] = date('Y-m-d H:i:s');
+				
+				
+				// Revisa que el usuario no esté ya registrado
+				if ( !$this->registro->verificarUsuarioEnCurso($id_usuario, $val) ) {
+					$this->registro->insertarUsuarioCurso($datos);
+				}
 			}
 		}
 		
@@ -318,48 +320,50 @@ class Registro extends CI_Controller {
 			$id_usr_moodle = $this->registro->insertMoodleUser($usrData);
 		}
 		
-		foreach ( $cursos as $val ) {
-			// Obtenemos datos de la sede seleccionada
-			$datos_curso = $this->registro->getShortnameByID($val);
+		if( $cursos ) {
+			foreach ( $cursos as $val ) {
+				// Obtenemos datos de la sede seleccionada
+				$datos_curso = $this->registro->getShortnameByID($val);
+					
+				// Con los datos anteriores consultamos el curso en Moodle
+				$curso_moodle = $this->registro->getMoodleCourse($datos_curso->nombre_corto);
+					
+				// Obtenemos el contexto de Moodle
+				$contexto = $this->registro->getMoodleContext($curso_moodle->id);
+					
+				// Consultamos la matricula registrada
+				$enrol = $this->registro->getMoodleEnrol($curso_moodle->id);
+					
+				// Matricula al usuario
+				$userEnrollment['status'] = 0;
+				$userEnrollment['enrolid'] = $enrol->id;
+				$userEnrollment['userid'] = $id_usr_moodle;
+				$userEnrollment['timestart'] = $time;
+				$userEnrollment['timeend'] = 0;
+				$userEnrollment['modifierid'] = 2;
+				$userEnrollment['timecreated'] = $time;
+				$userEnrollment['timemodified'] = $time;
+				//print_r($userEnrollment);
 				
-			// Con los datos anteriores consultamos el curso en Moodle
-			$curso_moodle = $this->registro->getMoodleCourse($datos_curso->nombre_corto);
+				if ( !$this->registro->checkUserEnrollments($id_usr_moodle, $enrol->id) ) {
+					$this->registro->insertUserEnrollments($userEnrollment);
+				}
+					
+				// Se asigna el rol
+				$roleAssignment['roleid'] = 5;
+				$roleAssignment['contextid'] = $contexto->id;
+				$roleAssignment['userid'] = $id_usr_moodle;
+				$roleAssignment['timemodified'] = $time;
+				$roleAssignment['modifierid'] = 2;
+				$roleAssignment['component'] = '';
+				$roleAssignment['itemid'] = 0;
+				$roleAssignment['sortorder'] = 0;
+				//print_r($roleAssignment);
 				
-			// Obtenemos el contexto de Moodle
-			$contexto = $this->registro->getMoodleContext($curso_moodle->id);
-				
-			// Consultamos la matricula registrada
-			$enrol = $this->registro->getMoodleEnrol($curso_moodle->id);
-				
-			// Matricula al usuario
-			$userEnrollment['status'] = 0;
-			$userEnrollment['enrolid'] = $enrol->id;
-			$userEnrollment['userid'] = $id_usr_moodle;
-			$userEnrollment['timestart'] = $time;
-			$userEnrollment['timeend'] = 0;
-			$userEnrollment['modifierid'] = 2;
-			$userEnrollment['timecreated'] = $time;
-			$userEnrollment['timemodified'] = $time;
-			//print_r($userEnrollment);
-			
-			if ( !$this->registro->checkUserEnrollments($id_usr_moodle, $enrol->id) ) {
-				$this->registro->insertUserEnrollments($userEnrollment);
-			}
-				
-			// Se asigna el rol
-			$roleAssignment['roleid'] = 5;
-			$roleAssignment['contextid'] = $contexto->id;
-			$roleAssignment['userid'] = $id_usr_moodle;
-			$roleAssignment['timemodified'] = $time;
-			$roleAssignment['modifierid'] = 2;
-			$roleAssignment['component'] = '';
-			$roleAssignment['itemid'] = 0;
-			$roleAssignment['sortorder'] = 0;
-			//print_r($roleAssignment);
-			
-			if ( !$this->registro->checkRoleAssignments($id_usr_moodle, $contexto->id) ) {
-				if($this->registro->insertRoleAssignments($roleAssignment)) {
-					$respuesta = $id_usuario;
+				if ( !$this->registro->checkRoleAssignments($id_usr_moodle, $contexto->id) ) {
+					if($this->registro->insertRoleAssignments($roleAssignment)) {
+						$respuesta = $id_usuario;
+					}
 				}
 			}
 		}

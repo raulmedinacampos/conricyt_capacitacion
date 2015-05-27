@@ -175,7 +175,7 @@ $(function() {
 			        <?php
 					if ( $this->session->userdata('usuario') ) {
 					?>
-					<li <?php if($ctrl == "usuario") {echo 'class="active"'; } ?>><a href="<?php echo base_url('usuario'); ?>">Mi perfil</a></li>
+					<li <?php if($ctrl == "usuario") {echo 'class="active"'; } ?>><a href="<?php echo base_url('usuario'); ?>">Mis Cursos</a></li>
 					<?php
 					}
 					?>

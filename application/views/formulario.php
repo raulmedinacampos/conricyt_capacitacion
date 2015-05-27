@@ -24,15 +24,24 @@ $(function() {
 </div>
 
 <div id="contenido-texto">
-	<p>Debes llenar cuidadosamente cada campo con la información que se solicita, ya que si deseas obtener la Constancia de Terminación del Curso, tu nombre aparecerá tal como lo ingreses en el formulario.</p>
-	
-	<p>Una vez que hayas concluido tu registro, se te enviará por correo electrónico tu clave de usuario y contraseña. Para ingresar a los cursos seleccionados, debes colocar las contraseñas en la sección que lo solicita.</p>
-	
-	<p>Recuerda que cada curso requiere hasta de 20 horas (no continuas) para su realización, después de 30 días continuos sin actividad se te desmatriculará de manera automática; si deseas recuperar tu curso deberás registrarte e iniciar nuevamente.</p>
-	
-	<p>Se recomienda contar con un mínimo de 80% de reactivos correctos en cada una de las evaluaciones por módulo y en la evaluación final, para poder obtener la Constancia de Terminación del Curso.</p> 
-	
-	<p><b><i>Los datos personales proporcionados se encuentran protegidos conforme a lo dispuesto por la Ley Federal de Transparencia y Acceso a la Información Pública Gubernamental. La información recabada en este sistema tiene la finalidad de contar con datos estadísticos, para la realización de encuestas de calidad en el servicio y de contacto para enviar invitaciones a presentaciones de materiales de divulgación y eventos que organiza el Consorcio.</i></b></p>
+	<p class="indicaciones">Indicaciones.</p>
+	<p>Debes llenar cuidadosamente cada campo con la información que se solicita, tu nombre aparecerá en el portal y en la constancia tal como lo ingreses en el formulario.</p>
+	<ol>
+		<li>En los campos los datos personales escribe tu nombre y en caso de no contar con alguno de los apellidos habilita las opciones "Sin apellido paterno" o "Sin apellido materno" según sea el caso.</li>
+		<li>Escribir correctamente el correo electrónico al cual llegará tu usuario y contraseña, y confirmarlo.</li>
+		<li>De los campos sexo, país, perfil e institución selecciona la opción correspondiente.<br />
+		<strong>Nota: Si en las opciones no aparece tú perfil ni tú institución, selecciona la opción "otro" y escribe en el campo "Otro perfil" (tu actividad en la institución) y en el campo "Otra institución" (El nombre de la institución a la que perteneces).</strong></li>
+		<li>Selecciona el o los cursos a los que deseas registrarte y  da clic en "Acepto los términos y condiciones de uso".</li>
+		<li>Por último escribe el código que se muestra en el recuadro gris y da clic en enviar.</li>
+	</ol>
+	<p>Aparece una ventana emergente que muestra tus datos para que verifiques si estos son correctos y puedas modificarlos dando clic en el botón Regresar.</p>
+	<p>Si tus datos son correctos da clic en el botón Enviar registro y aparece otra ventana con el nombre Registro realizado, en el que aparece un enlace donde se puede descargar el comprobante de inscripción con tus claves.</p>
+	<p>Una vez que hayas concluido tu registro, en tu correo electrónico llegará tu comprobante que incluye tu usuario y contraseña. Para ingresar al Centro de Capacitación debes colocar estos datos en la sección que lo solicita.</p>
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<span>Los datos personales proporcionados se encuentran protegidos conforme a lo dispuesto por la Ley Federal de Transparencia y Acceso a la Información Pública Gubernamental. La información recabada en este sistema tiene la finalidad de contar con datos estadísticos, para la realización de encuestas de calidad en el servicio y de contacto para enviar invitaciones a presentaciones de materiales de divulgación y eventos que organiza el Consorcio.</span>
+		</div>
+	</div>
 <?php
 $attr = array(
 	'id'	=>	'formRegistro',
@@ -254,7 +263,7 @@ $attr = array(
 		'name'	=>	'chk_terminos',
 		'value'	=>	1
 );
-echo form_label(form_checkbox($attr).' Acepto los términos y condiciones de uso:', '', array('class' => 'col-xs-8 checkbox-inline'));
+echo form_label(form_checkbox($attr).' Acepto los <a href="'.base_url('pdf/terminos_y_condiciones.pdf').'" target="_blank">términos y condiciones de uso</a>:', '', array('class' => 'col-xs-8 checkbox-inline'));
 echo '</div>';
 
 echo '<div class="form-group">';

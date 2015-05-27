@@ -102,6 +102,12 @@ function validarApellidos() {
 
 // Parámetros y reglas para la validación del formulario
 function validarFormulario() {
+	$.validator.addMethod("cursos", function(value, element) {
+		var c = $('input[name="cursos[]"]').length;
+		return c > 0;
+	}, "Selecciona un curso");
+	
+	
 	$("#formRegistro").validate({
 		errorLabelContainer: "#mensajesModal .modal-body ul",
 		errorElement: 'li',
@@ -153,6 +159,9 @@ function validarFormulario() {
 			otra_institucion: {
 				required: true
 			},
+			cmb_curso: {
+				cursos: true
+			},
 			"cursos[]": {
 				required: true,
 				minlength: 1
@@ -184,6 +193,7 @@ function validarFormulario() {
 			otro_perfil: "Escribe un perfil que te describa",
 			institucion: "Falta seleccionar la institución",
 			otra_institucion: "Escribe tu institución de procedencia",
+			cmb_curso: "Selecciona por lo menos un curso",
 			"cursos[]": "Selecciona por lo menos un curso",
 			chk_terminos: "Debes aceptar los términos y condiciones de uso",
 			captcha: {
