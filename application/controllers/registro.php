@@ -140,6 +140,17 @@ class Registro extends CI_Controller {
 		return $password;
 	}
 	
+	public function revisarCorreoRepetido() {
+		$correo = $this->input->post('correo');
+	
+		if($this->registro->verificarUsuarioExistente($correo)) {
+			// Ya existe el usuario
+			echo "false";
+		} else {
+			echo "true";
+		}
+	}
+	
 	private function crearComprobante($id_usuario, $consulta = "") {
 		error_reporting(0);
 		$this->load->library("Fecha");

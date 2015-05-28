@@ -9,6 +9,18 @@
     opacity: 0.75;
 }
 </style>
+
+<script type="text/javascript">
+$(function() {
+	$('body').on('hidden.bs.modal', '.modal', function () {
+		$('video').trigger('pause');
+	});
+
+	$('body').on('shown.bs.modal', '.modal', function () {
+		$('video').trigger('play');
+	});
+});
+</script>
          <div id="contenido-titulo" >
          <h1 >Guías de uso</h1>
          </div>
@@ -28,16 +40,10 @@
          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
-    	<!--<div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Guía de uso</h4>
-      </div>
-      <div class="modal-body">-->
          <div align="center" class="embed-responsive embed-responsive-16by9">
 		    <video autoplay="autoplay" controls="controls" preload="auto" class="embed-responsive-item">
 		        <source src="<?php echo base_url('media/como_ingresar4.mp4')?>" type="video/mp4" />
 		    </video>
-		<!-- </div> -->
 		</div>
 		</div>
 		</div>

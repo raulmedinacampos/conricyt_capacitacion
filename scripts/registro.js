@@ -48,8 +48,8 @@ function cambiarCaptcha() {
 
 // Agregar los checkbox de los cursos seleccionados
 function agregarCurso() {
-	$("#cmb_curso option").click(function() {
-		var elemento = $(this);
+	$("#cmb_curso").change(function() {
+		var elemento = $(this).children("option:selected");
 		
 		if ( elemento.val() != "" ) {
 			elemento.css("display", "none");
@@ -132,7 +132,12 @@ function validarFormulario() {
 			},
 			correo: {
 				required: true,
-				email: true
+				email: true,
+				remote: {
+					url: "./registro/revisarCorreoRepetido",
+					type: "post",
+					async: false
+				}
 			},
 			correo_conf: {
 				required: true,
@@ -180,7 +185,8 @@ function validarFormulario() {
 			ap_materno: "El apellido materno es obligatorio",
 			correo: {
 				required: "El correo es obligatorio",
-				email: "El formato del correo es incorrecto"
+				email: "El formato del correo es incorrecto",
+				remote: "El correo que escribiste ya está registrado"
 			},
 			correo_conf: {
 				required: "Falta confirmar el correo electrónico",
