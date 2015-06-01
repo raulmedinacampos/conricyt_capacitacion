@@ -45,5 +45,7 @@ $route['cursos/(:num)'] = "cursos/informacion/$1";
 
 $route['administrador'] = "administrador/administrador";
 
+$route['(:any)/(error)*'] = "$1";
+
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

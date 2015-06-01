@@ -93,6 +93,26 @@ C.P.: 03940, México, D.F. Tel: (55) 5322-7700. Ext. 4020 a la 4026
 		  </div>
 		</div>
 		<!-- Fin ventana modal -->
+		
+		<!-- Modal error login -->
+		<div class="modal fade" id="modalErrorLogin" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+		  <div class="modal-dialog modal-sm">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">Cerrar</span></button>
+		        <p class="glyphicon glyphicon-alert text-center"></p>
+		      </div>
+		      <div class="modal-body">
+		      	<h4>¡Usuario o contraseña invalidos!</h4>
+		      	<p>Por favor intenta de nuevo. Si el error persiste favor de comuncarte a:<br />
+		      	Centro de Capacitación Virtual CONRICYT<br />
+		      	Tel: (55) 5322 7700 ext. 4026<br />
+		      	Email: centro.capacitacion@conricyt.mx</p>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		<!-- Fin modal error -->
       
       
          </div>

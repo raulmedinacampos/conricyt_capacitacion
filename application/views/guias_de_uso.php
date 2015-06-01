@@ -1,5 +1,5 @@
 <style>
-.modal-content {
+#myModal .modal-content {
     background-color: unset;
     border: none;
     box-shadow: none;

@@ -41,12 +41,19 @@ $(function() {
 		}
 		?>
 	});
+
+	<?php
+	if ( $this->uri->segment(2) == "error" ) {
+	?>
+		$("#modalErrorLogin").modal('show');
+	<?php
+	}
+	?>
 });
 </script>
 </head>
 
 <body>
-
 	<div id="header-pleca-superior"></div>
 
 	<!-- contenedor 1-->

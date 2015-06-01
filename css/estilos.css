@@ -78,6 +78,40 @@ blockquote {border-left: 4px solid #CCCCCC; font-size: 14px;}
 
 #formLogin button {width: 100%;}
 
+#modalErrorLogin .modal-sm {
+    width: 460px;
+}
+
+#modalErrorLogin .modal-header {
+    background: -webkit-linear-gradient(#FFD480, #FFAA00);
+    background: -o-linear-gradient(#FFD480, #FFAA00);
+    background: -moz-linear-gradient(#FFD480, #FFAA00);
+    background: linear-gradient(#FFD480, #FFAA00);
+}
+
+#modalErrorLogin .modal-header .glyphicon {
+	display: block;
+	font-size: 84px;
+	color: #FFFFFF;
+}
+
+#modalErrorLogin .modal-header .close {
+	position: absolute;
+	float: none;
+	right: 12px;
+	top: 10px;
+}
+
+#modalErrorLogin .modal-body > h4 {
+    margin-bottom: 15px;
+    font-size: 25px;
+	color: #FFAA00;
+    text-align: center;
+}
+
+#modalErrorLogin .modal-footer {
+	text-align: center;
+}
 
 
 

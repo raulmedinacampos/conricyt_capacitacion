@@ -6,6 +6,8 @@ class Login extends CI_Controller {
 	}
 	
 	public function index() {
+		$this->load->library('user_agent');
+		
 		$data['login'] = addslashes($this->input->post('usuario'));
 		$data['password'] = addslashes($this->input->post('password'));
 		
@@ -15,7 +17,19 @@ class Login extends CI_Controller {
 			$this->session->set_userdata('usuario', $usuario->id_usuario);
 			redirect(base_url('usuario'));
 		} else {
-			redirect($_SERVER['HTTP_REFERER']);
+			$pagina = $this->agent->referrer();
+			
+			$segmento = explode("/", $pagina);
+			
+			if ( $_SERVER['HTTP_REFERER'] == base_url() ) {
+				$pagina = base_url('inicio');
+			}
+			
+			if ( $segmento[sizeof($segmento)-1] != "error" ) {
+				$pagina .= "/error";
+			}
+			
+			redirect($pagina);
 		}
 	}
 	
@@ -45,6 +59,22 @@ class Login extends CI_Controller {
 		$this->session->sess_destroy();
 		
 		redirect(base_url());
+	}
+	
+	public function recuperar_password() {
+		if ( $this->session->userdata('usuario') ) {
+			$this->load->model('usuario_model', 'usuario', TRUE);
+			$id_usuario = $this->session->userdata('usuario');
+			$header['menu'] = $this->usuario->consultarCursosInscritos($id_usuario);
+			$header['usuario'] = $this->usuario->consultarUsuarioPorID($id_usuario);
+		} else {
+			$this->load->model('curso', '', TRUE);
+			$header['menu'] = $this->curso->listado();
+		}
+			
+		$this->load->view('header', $header);
+		$this->load->view('recuperar');
+		$this->load->view('footer');
 	}
 }
 ?>
