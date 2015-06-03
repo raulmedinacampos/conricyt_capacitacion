@@ -54,7 +54,7 @@ function agregarCurso() {
 		if ( elemento.val() != "" ) {
 			elemento.css("display", "none");
 			
-			var chk = '<label class="col-xs-6">';
+			var chk = '<label class="col-sm-6 col-xs-12">';
 			chk += '<input id="chk_curso_'+elemento.val()+'" type="checkbox" checked="checked" value="'+elemento.val()+'" name="cursos[]"> ';
 			chk += elemento.text();
 			chk += '</label>';

@@ -29,6 +29,7 @@
 			$this->db->from('curso c');
 			$this->db->where('c.id_curso NOT IN(', "SELECT curso FROM usuario_curso WHERE usuario = $usuario)", FALSE);
 			$this->db->where('c.estatus >', 0);
+			$this->db->order_by('c.curso');
 			$query = $this->db->get();
 			
 			if ( $query->num_rows() > 0 ) {

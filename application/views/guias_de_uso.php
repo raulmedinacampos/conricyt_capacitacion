@@ -1,84 +1,67 @@
-<style>
-#myModal .modal-content {
-    background-color: unset;
-    border: none;
-    box-shadow: none;
-}
+<div id="contenido-titulo">
+	<h1>Guías de uso</h1>
+</div>
 
-.modal-backdrop.in {
-    opacity: 0.75;
-}
-</style>
+<div id="contenido-linea">
+	<div id="contenido-mundo">
+		<img src="<?php echo base_url('images/mundo.png'); ?>">
+	</div>
+</div>
 
-<script type="text/javascript">
-$(function() {
-	$('body').on('hidden.bs.modal', '.modal', function () {
-		$('video').trigger('pause');
-	});
+<br>
+<br>
+<div id="contenido-texto">
+	<p>Esta sección cuenta con videotutoriales de apoyo, uso y gestión en el Centro de Capacitación, tales como:</p>
+	<ul>
+		<li><a href="#" data-toggle="modal" data-target="#video_registro">¿Cómo registrarme a uno o más cursos?</a></li>
+		<li><a href="#" data-toggle="modal" data-target="#video_ingreso">¿Cómo ingresar al espacio "Mis cursos"?</a></li>
+		<li><a href="#" data-toggle="modal" data-target="#video_contenido">¿Cómo acceder al contenido de un curso?</a></li>
+	</ul>
 
-	$('body').on('shown.bs.modal', '.modal', function () {
-		$('video').trigger('play');
-	});
-});
-</script>
-         <div id="contenido-titulo" >
-         <h1 >Guías de uso</h1>
-         </div>
-         
-         <div id="contenido-linea" >
-         <div id="contenido-mundo" ><img src="<?php echo base_url('images/mundo.png'); ?>"></div>
-         </div>
-         
-         <br><br>
-         <div id="contenido-texto" >
-         Si tienes alguna duda sobre el funcionamiento de la plataforma del Centro de Capacitación Virtual, aquí podrás resolver todas tus dudas consultando los videotutoriales. 
-         <br /><br />
-         
-         <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Video</button>
-         
-         <!-- Video -->
-         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-         <div align="center" class="embed-responsive embed-responsive-16by9">
-		    <video autoplay="autoplay" controls="controls" preload="auto" class="embed-responsive-item">
-		        <source src="<?php echo base_url('media/como_ingresar4.mp4')?>" type="video/mp4" />
-		    </video>
+	<!-- Videos -->
+	<!-- Video Registro -->
+	<div class="modal fade modal_video" id="video_registro" tabindex="-1"
+		role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div align="center" class="embed-responsive embed-responsive-16by9">
+					<iframe width="100%" height="100%"
+						src="https://www.youtube.com/embed/kFzFvwzWZtk?list=PL6e5g66BBEbyulmocw5Jo9f1MmAx9RwT3"
+						frameborder="0" allowfullscreen></iframe>
+				</div>
+			</div>
 		</div>
+	</div>
+
+	<!-- Video Ingreso -->
+	<div class="modal fade modal_video" id="video_ingreso" tabindex="-1"
+		role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div align="center" class="embed-responsive embed-responsive-16by9">
+					<iframe width="100%" height="100%"
+						src="https://www.youtube.com/embed/dYIZCIr3nn0?list=PL6e5g66BBEbyulmocw5Jo9f1MmAx9RwT3"
+						frameborder="0" allowfullscreen></iframe>
+				</div>
+			</div>
 		</div>
+	</div>
+
+	<!-- Video Contenido -->
+	<div class="modal fade modal_video" id="video_contenido" tabindex="-1"
+		role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div align="center" class="embed-responsive embed-responsive-16by9">
+					<iframe width="100%" height="100%"
+						src="https://www.youtube.com/embed/qj3N9na1Dpc?list=PL6e5g66BBEbyulmocw5Jo9f1MmAx9RwT3"
+						frameborder="0" allowfullscreen></iframe>
+				</div>
+			</div>
 		</div>
-		</div>
-         <!-- Fin video -->
-         
-         <!-- guia -->
-         <div  class="guia-modulo" >
-         
-         
-         <div class="guia-icono" >
-         <img  src="<?php echo base_url(); ?>images/iconos/video.png" >
-         </div>
-         
-         <div class="guia-texto" >
-         
-         Te presentamos un video que muestra una visión general del como están conformados  los cursos de capacitación 	virtual.
-         <br />
-         <br />
-         
-         <div class="guia-links" > 
-          <a href="<?php echo base_url(); ?>images/guias/moodle" target="_blank" >Ver video </a>
-         <br />
-         <a href="<?php echo base_url(); ?>images/guias/moodle/moodle.zip" target="_blank"  >Descargar video</a>
-         </div>
-         
-       </div>
-         
-         </div>
-         <!-- Fin guia -->
-         
-         
-         
-         
-         <br style="clear: both;">
-         </div>
-         
-         <br><br>
+	</div>
+	<!-- Fin videos -->
+
+
+	<br style="clear: both;">
+</div>

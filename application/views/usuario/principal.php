@@ -41,7 +41,7 @@ $saludo = ($usuario->sexo == 'm') ? "Bienvenido" : "Bienvenida";
 		echo '<ul>';
 		foreach ( $cursos->result() as $curso ) {
 	?>
-			<li><a data-id="<?php echo $curso->id_curso; ?>" href="#"><?php echo $curso->curso; ?></a>
+			<li><span class="col-sm-5"><?php echo $curso->curso; ?></span><a data-id="<?php echo $curso->id_curso; ?>" href="#"><span class="btn btn-xs btn-primary">Ingresar al curso</span></a>
 	<?php
 		}
 		echo '</ul>';
@@ -63,7 +63,7 @@ $saludo = ($usuario->sexo == 'm') ? "Bienvenido" : "Bienvenida";
 				$clase_estatus = "nuevo";
 			}
 	?>
-			<li><span class="<?php echo $clase_estatus; ?>"><?php echo $curso->curso; ?></span><a data-id="<?php echo $curso->id_curso; ?>" data-curso="<?php echo $curso->curso; ?>"><span class="btn btn-xs btn-primary">Incribirme a este curso</span></a>
+			<li><span class="col-sm-5 <?php echo $clase_estatus; ?>"><?php echo $curso->curso; ?></span><a data-id="<?php echo $curso->id_curso; ?>" data-curso="<?php echo $curso->curso; ?>"><span class="btn btn-xs btn-primary">Incribirme a este curso</span></a>
 	<?php
 		}
 		echo '</ul>';

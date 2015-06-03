@@ -15,22 +15,6 @@
 	font-size: 45px;
 }
 
-/*.nombre {
-	margin: -12px 128px 0 0;
-	color: #FFFFFF;
-	text-align: right;
-}
-
-.salir {
-	position: absolute;
-	right: 128px;
-    top: 50px;
-}
-
-.salir a {
-	color: #F18A1E;
-}*/
-
 h4.cursos {
 	padding: 3px 0 3px 22px;
 	background-color: #13447D;
@@ -81,7 +65,7 @@ h4.cursos {
 	margin: 0 10px 0 0;
 }
 
-#disponibles ul li > span {
+#cursos ul li > span, #disponibles ul li > span {
 	margin-right: 20px;
 }
 

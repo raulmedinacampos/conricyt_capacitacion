@@ -22,6 +22,18 @@ $ctrl = $this->router->fetch_class();
 <script type="text/javascript" src="<?php echo base_url('scripts/bootstrap.min.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('scripts/login.js'); ?>"></script>
 
+<!-- Analitycs -->
+<!-- <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-63639260-1', 'auto');
+  ga('send', 'pageview');
+
+</script> -->
+
 <script type="text/javascript">
 $(function() {
 	$(".cursos-menu a").click(function(e) {
@@ -93,8 +105,7 @@ $(function() {
 			<div id="banner">
 
 				<div id="banner-fondo">
-					<img src="<?php echo base_url('images/header-banner.jpg'); ?>"
-						style="width: 100%; cursor: pointer;">
+					<img src="<?php echo base_url('images/header-banner.jpg'); ?>" />
 				</div>
 
 				<div id="banner-redes">
@@ -132,8 +143,8 @@ $(function() {
 							<?php
 							if ( !$this->session->userdata('usuario') ) {
 							?>
-							<label>usuario </label> <input type="text" id="usuario" name="usuario" />
-							<label>clave </label> <input type="password" id="password" name="password" />
+							<label>usuario </label> <input type="text" id="usuario" name="usuario" placeholder="Usuario" />
+							<label>clave </label> <input type="password" id="password" name="password" placeholder="Contraseña" />
 							<label>&nbsp;</label> <input type="submit" value="Enviar" id="enviar">&nbsp;&nbsp;
 							<?php
 							} else {
@@ -178,7 +189,7 @@ $(function() {
 			    <!-- Elmentos del menú -->
 			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			      <ul class="nav navbar-nav">
-			        <li <?php if($ctrl == "inicio") {echo 'class="active"'; } ?>><a href="<?php echo base_url('inicio'); ?>">Presentación <span class="sr-only">(current)</span></a></li>
+			        <li <?php if($ctrl == "inicio") {echo 'class="active"'; } ?>><a href="<?php echo base_url('inicio'); ?>">Inicio <span class="sr-only">(current)</span></a></li>
 			        <?php
 					if ( $this->session->userdata('usuario') ) {
 					?>
