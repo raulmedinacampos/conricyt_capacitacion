@@ -64,10 +64,10 @@ $(function() {
 		el documento descargado es el mismo que llegará al correo electrónico 
 		que se registró. Para cerrar el mensaje solo se debe dar clic en el 
 		botón "Aceptar".</p>
-	<p>Una vez que hayas concluido tu registro. En el correo electrónico
-		registrado llegará el comprobante que incluye: el usuario y la
-		contraseña. Para ingresar al Centro de Capacitación se deben colocar
-		estos datos en la sección que lo solicita.</p>
+	<p>Una vez concluido el registro. En el correo electrónico registrado 
+		llegará el comprobante que incluye: el usuario y la contraseña. 
+		Para ingresar al Centro de Capacitación se deben colocar estos datos 
+		en la sección que lo solicita.</p>
 	<div class="panel panel-default">
 		<div class="panel-body">
 			<span>Los datos personales proporcionados se encuentran protegidos

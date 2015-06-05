@@ -10,7 +10,7 @@
 
 <?php
 if ($query && sizeof($query) < 4) {
-	?>
+?>
 <style type="text/css">
 #curso-editoriales {
 	width: <?php echo(sizeof($query) * 25)?>%;
@@ -25,15 +25,16 @@ if ($query && sizeof($query) < 4) {
 		$("#curso-editoriales").owlCarousel({
 			<?php
 			if (sizeof($query) < 4) {
-				?>
+			?>
 			items: <?php echo (int)sizeof($query); ?>,
 			<?php
 			} else {
-				?>
+			?>
 			items: 4,
 			<?php
 			}
 			?>
+			itemsTablet: [768,3],
 			itemsMobile: [479,2],
 			autoPlay: 3000,
 			stopOnHover: true
@@ -103,8 +104,8 @@ if ($query && sizeof($query) < 4) {
 	<h4>Acerca de los Cursos</h4>
 
 	<p>Todos los cursos disponibles en el Centro de Capacitación Virtual
-		son autogestivos, donde se puede trabajar, cada curso requiere, en
-		promedio 20 horas (no continuas) para su conclusión.</p>
+		son autogestivos. Cada curso requiere, en promedio 20 horas (no 
+		continuas) para su conclusión.</p>
 
 	<p>Los cursos se encuentran estructurados por módulos, con unidades de
 		aprendizaje, que incluyen además de los contenidos, ejercicios de
@@ -122,8 +123,8 @@ if ($query && sizeof($query) < 4) {
 	<!-- Carrousel -->
 	<div id="curso-editoriales" class="owl-carousel">
     <?php
-				foreach ( $query as $curso ) {
-					?>
+	foreach ( $query as $curso ) {
+	?>
 	    <div class="curso-bloque"
 			data-idcurso="<?php echo $curso->id_curso; ?>"
 			data-curso="<?php echo $curso->nombre_corto; ?>"
@@ -134,8 +135,8 @@ if ($query && sizeof($query) < 4) {
 			<div class="calificacion" data-calif="<?php echo $curso->calif; ?>"></div>
 		</div>
     <?php
-				}
-				?>
+	}
+	?>
   </div>
 	<!-- Fin carrousel -->
 
