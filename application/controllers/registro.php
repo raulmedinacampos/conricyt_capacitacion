@@ -381,12 +381,12 @@ class Registro extends CI_Controller {
 		
 		$remitente = trim($registro['nombre']." ".$registro['ap_paterno']." ".$registro['ap_materno']);
 		$asunto = 'Comprobante de Registro al Centro de Capacitación Virtual CONRICYT';
-		$body = '<table width="100%" border="1" cellspacing="0" cellpadding="10" border="0" bordercolor="#FFFFFF"><tr><td bgcolor="#005199" align="center"><font size="4" face="Arial" color="#e0e0e0"><strong>Comprobante de registro a las Jornadas de Capacitaci&oacute;n 2015.</strong></font></td></tr></table>';
+		$body = '<table width="100%" border="1" cellspacing="0" cellpadding="10" border="0" bordercolor="#FFFFFF"><tr><td bgcolor="#005199" align="center"><font size="4" face="Arial" color="#e0e0e0"><strong>Comprobante de registro al Centro de Capacitaci&oacute;n.</strong></font></td></tr></table>';
 		$body .= '<br /><br /><p><font size="3" face="Arial" color="#006699"><strong>&iexcl;Hola, '.$remitente.'!</strong></font></p>';
 		$body .= '<p><font size="3" face="Arial" color="#006699">&iexcl;Tu registro al <em>Centro de Capacitaci&oacute;n Virtual del CONRICYT</em> se ha realizado con &eacute;xito!</font></p>';
 		$body .= '<p><font size="3" face="Arial" color="#006699">Adjunto encontrar&aacute;s tu comprobante de registro que contiene tus claves de usuario y contrase&ntilde;a y en el que se te indica la forma de ingresar al Centro de Capacitaci&oacute;n Virtual del CONRICYT.</p>';
 		$body .= '<p><font size="3" face="Arial" color="#006699">Asimismo se encuentran los t&eacute;rminos y condiciones sobre el uso del Centro de Capacitaci&oacute;n del CONRICYT.</font></p>';
-		$body .= '<p><font size="3" face="Arial" color="#FF0000">Para cualquier duda o aclaraci&oacute;n pueden contactarnos en: centro.capacitacion@conricyt.mx y al tel&eacute;fono (55) 5322 7700 ext. 4020 a 4026</font></p>';
+		$body .= '<p><font size="3" face="Arial" color="#FF0000">Para cualquier duda o aclaraci&oacute;n pueden contactarnos en: capacitacion@conricyt.mx y al tel&eacute;fono (55) 5322 7700 ext. 4020 a 4026</font></p>';
 		$body .= '<table width="100%" border="1" cellspacing="0" cellpadding="10" border="0" bordercolor="#FFFFFF"><tr><td bgcolor="#e0e0e0" align="center"><font size="3" face="Arial" color="#005199"><strong>Consejo Nacional de Ciencia y Tecnolog&iacute;a (CONACYT)</strong></font></td></tr></table>';
 		
 		$this->enviarCorreo($id_usuario, $registro['correo'], $remitente, $asunto, $body);
