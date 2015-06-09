@@ -217,7 +217,7 @@ blockquote {border-left: 4px solid #CCCCCC; font-size: 14px;}
 
 #contenido{ margin:15px auto 10px; max-width:960px; border:#999999 2px solid; background-repeat:repeat; border-radius:8px; box-shadow: 3px 3px 10px #000000; background-color:#CCCCCC; background-image:url(../images/fondo.png); }
 
-#contenido-titulo{position:relative; min-width:930px; min-height:45px; max-height:45px; border:orange 0px solid;}
+#contenido-titulo{position:relative; min-width:930px; min-height:45px; max-height:45px; border:none;}
 
 #contenido-titulo h1{font-family: 'Scada', Verdana, sans-serif; font-weight:700; margin:0 0 0 20px; top:0px; padding:5px 10px; max-height:25px; font-size:22px; font-weight:bold; color:#1F3D6E;}
 

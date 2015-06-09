@@ -1,0 +1,17 @@
+td:first-of-type {
+	width: 12%;
+}
+
+th:last-of-type {
+	text-align: right;
+}
+
+td:last-of-type {
+	width: 20%;
+	text-align: right;
+}
+
+tr.total td {
+	font-weight: bold;
+	background-color: #DDE1E6;
+}

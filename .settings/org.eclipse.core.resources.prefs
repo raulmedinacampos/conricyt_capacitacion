@@ -1,4 +1,7 @@
 eclipse.preferences.version=1
+encoding//application/views/administrador/header_admin.php=UTF-8
+encoding//application/views/administrador/inicio.php=UTF-8
+encoding//application/views/administrador/listado.php=UTF-8
 encoding//application/views/contacto.php=UTF-8
 encoding//application/views/cursos.php=UTF-8
 encoding//application/views/footer.php=UTF-8
@@ -8,4 +11,9 @@ encoding//application/views/header.php=UTF-8
 encoding//application/views/info_cursos.php=UTF-8
 encoding//application/views/inicio.php=UTF-8
 encoding//application/views/preguntas_frecuentes.php=UTF-8
+encoding//application/views/reportes/cursos.php=UTF-8
+encoding//application/views/reportes/genero.php=UTF-8
+encoding//application/views/reportes/instituciones.php=UTF-8
+encoding//application/views/reportes/otras_instituciones.php=UTF-8
+encoding//application/views/reportes/regiones.php=UTF-8
 encoding//application/views/usuario/principal.php=UTF-8

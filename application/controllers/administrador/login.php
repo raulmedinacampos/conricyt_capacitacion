@@ -2,33 +2,24 @@
 class Login extends CI_Controller {
 	function __construct() {
 		parent::__construct();
-		$this->load->model('usuario', '', TRUE);
+		$this->load->model('login_model', 'login', TRUE);
 	}
 	
 	public function index() {
-		/*$this->load->library('form_validation');
-		$usuario = $this->input->post('usuario');
-		$pass = $this->input->post('contrasenia');
-		$pass = md5($pass);
-		$result = $this->usuario->login($usuario, $pass);
+		$login = addslashes($this->input->post('admin_usuario'));
+		$password = addslashes($this->input->post('admin_password'));
 		
-		if($result) {
-			$session = array();
-			foreach($result as $row) {
-				$session = array(
-					'id'		=>	$row->id_usuario,
-					'usuario'	=>	$row->login
-								);
-			}
-			redirect('administrador/cursos/nuevo');
+		if ( $login === 'admin' && $password === 'C0nr1cyT##' ) {
+			$this->session->set_userdata('admin', '1');
+			redirect(base_url('administrador/usuarios'));
 		} else {
-			redirect('administrador', 'refresh');
-		}*/
+			redirect(base_url('administrador'));
+		}
 	}
 	
-	public function logout() {
-		$this->session->unset_userdata();
-		session_destroy();
+	public function salir() {
+		$this->session->sess_destroy();
+		
 		redirect('administrador');
 	}
 }
