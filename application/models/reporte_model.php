@@ -119,5 +119,6 @@ class Reporte_model extends CI_Model {
 			return $total->total;
 		}
 	}
+	
 }
 ?>

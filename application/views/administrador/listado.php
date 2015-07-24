@@ -3,6 +3,59 @@
 <script type="text/javascript" src="<?php echo base_url('scripts/jquery.bs_grid.min.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('scripts/en.min.js'); ?>"></script>-->
 <script type="text/javascript" src="<?php echo base_url('scripts/buscador.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('scripts/jquery-1.11.0.min.js'); ?>"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/jquery.dataTables.min.css'); ?>" />
+<script type="text/javascript" src="<?php echo base_url('scripts/jquery.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('scripts/jquery.dataTables.min.js'); ?>"></script>
+<script type="text/javascript">
+ function mandarFormulario(){
+	 var cadena = $("#formBuscador").serialize();
+	 $.post("usuarios/listarRegistrados",  cadena , function(data){
+		 var obj = $.parseJSON(data);
+		
+		 //alert(obj.toSource());
+		 /*$.each(data, function(index, val) {
+			 alert();
+		 });*/
+		 
+			var resultados = "";
+			var num = 1;	
+			var $tabla = $("#resultados");
+			$tabla.find("tr:gt(0)").remove();
+				
+			$.each(obj, function(index, val) {
+					
+				resultados += '<tr>';
+				resultados += '<td>'+num+'</td>';
+				resultados += '<td>'+val.nombre+' '+val.ap_paterno+' '+val.ap_materno+'</td>';
+				resultados += '<td>'+val.institucion+'</td>';
+				resultados += '<td>'+val.login+'</td>';
+				resultados += '<td>'+val.password+'</td>';
+				resultados += '<td><a href="../registro/comprobante'+"/"+val.id_usuario+'"><span class="glyphicon glyphicon-download-alt"></span></a></td>';
+				resultados += '</tr>';
+				num++;
+				});			
+				$("#resultados").append(resultados);			
+			});//funtion data         
+	}//mandar formulario
+	$(function(){
+	 $("#btnBuscar").click(function(variable){
+		 variable.preventDefault();		
+		 mandarFormulario(); });
+	});
+	
+	    
+
+		  
+</script>
+
+<?php /*<script type="text/javascript">
+$(document).ready(function() {
+    $('#resultados').dataTable( {
+        "lengthMenu": [[1, 2], [1, 2]]
+    } );
+} );
+</script>*/?>
 
 <style type="text/css">
 #resultados td:last-of-type {
@@ -40,7 +93,7 @@ $attr = array(
 		'id'	=> 'nombre',
 		'name'	=> 'nombre',
 		'value'	=> (isset($filtro['nombre'])) ? $filtro['nombre'] : "",
-		'class'	=> 'form-control'
+		'class'	=> 'form-control',
 );
 echo form_input($attr);
 echo '</div>';
@@ -103,6 +156,16 @@ $attr = array(
 		'class'		=> 'btn btn-primary pull-right'
 );
 echo form_button($attr);
+
+
+?>
+
+
+
+<a href= "<?php echo base_url('administrador/reporte/reporteExcel');?>" class="btn btn-success active pull-right" role="button" style="margin-right:10px" > Exportar a Excel</a>
+
+<?php
+
 echo '</div>';
 echo '</div>';
 
@@ -123,6 +186,7 @@ echo form_close();
     <th>Comprobante</th>
   </tr>
   <?php
+  /*
   $i = 1;
   foreach ( $usuarios as $usuario ) {
   ?>
@@ -136,6 +200,7 @@ echo form_close();
   	</tr>
   <?php
   }
+  */
   ?>
 </table>
 </div>

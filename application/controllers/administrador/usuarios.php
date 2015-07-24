@@ -48,8 +48,14 @@ class Usuarios extends CI_Controller {
 		$this->load->view('footer');
 	}
 	
-	public function listarRegistrados() {
-		$usuarios = $this->administrador->listarUsuarios();
+	public function listarRegistrados() {		
+		$array = array();
+		$array['nombre'] = addslashes($this->input->post('nombre'));
+		$array['ap_paterno'] = addslashes($this->input->post('ap_paterno'));
+		$array['ap_materno'] = addslashes($this->input->post('ap_materno'));
+		$array['correo'] = addslashes($this->input->post('correo'));
+		$array['i.institucion'] = addslashes($this->input->post('institucion'));
+		$usuarios = $this->administrador->listarUsuarios($array);
 		$usuarios_arr = array();
 		
 		foreach ( $usuarios->result() as $usuario ) {

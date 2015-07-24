@@ -5,7 +5,8 @@
 			$this->db->from('curso');
 			$this->db->where('estatus >', 0);
 			$this->db->order_by('curso');
-			$query = $this->db->get();
+			$query = $this->db->get();		
+			$cquery = $this->db->last_query();
 			
 			if($query->num_rows() > 0) {
 				return $query;
@@ -19,7 +20,9 @@
 			$this->db->from('curso');
 			$this->db->where('id_curso', $curso);
 			$query = $this->db->get();
+			
 			$result = $query->row();
+			
 			
 			if($query->num_rows() > 0) {
 				return $result;

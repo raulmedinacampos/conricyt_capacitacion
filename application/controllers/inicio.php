@@ -24,8 +24,9 @@
 				$this->load->model('usuario_model', 'usuario', TRUE);
 				$id_usuario = $this->session->userdata('usuario');
 				$capacitaciones = $this->usuario->consultarCursosInscritos($id_usuario);
+				
 			} else {
-				$capacitaciones = $this->curso->listado();
+				$capacitaciones = $this->curso->listado();				
 			}
 			
 			foreach ( $capacitaciones->result() as $capacitacion ) {

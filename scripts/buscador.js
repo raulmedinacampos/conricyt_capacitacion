@@ -18,10 +18,10 @@
 		$("#resultados").append(resultados);
 	});
 }*/
-
+/*
 $(function() {
-	/*inicializar();*/
+	/*inicializar();
 	$("#btnBuscar").click(function() {
 		$("#formBuscador").submit();
 	});
-});
+});*/

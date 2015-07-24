@@ -3,6 +3,8 @@ class Reporte extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 		$this->load->model('reporte_model', 'reporte', TRUE);
+		$this->load->model('administrador_model', 'adreporte', TRUE);
+		
 		
 		if ( !$this->session->userdata('admin') ) {
 			redirect(base_url());
@@ -174,5 +176,79 @@ class Reporte extends CI_Controller {
 		$this->load->view('reportes/cursos', $data);
 		$this->load->view('footer');
 	}
+	
+	public function reporteExcel()
+	{
+		$this->load->library('excel');
+		$registros = $this->adreporte->listarUsuarios2();
+		$registros_aux = $registros->result();
+		$fila = 1;
+		$xls = new PHPExcel();
+		 
+		$fields = $registros->list_fields();
+		$col = 0;
+		
+		// Encabezados
+		$xls->getActiveSheet()->getStyle('A1'.':G1')->getFont()->setBold(true);
+		$xls->getActiveSheet()->getStyle('A1'.':G1')->getFont()->getColor()->setRGB('FFFFFF');
+		$xls->getActiveSheet()->getStyle('A1'.':G1')->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)->getStartColor()->setRGB('484F56');
+		$xls->getActiveSheet()->getStyle('A1'.':G1')->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
+		
+		// Ancho de las columnas
+		$xls->getActiveSheet()->getColumnDimension('A')->setAutoSize(true);
+		$xls->getActiveSheet()->getColumnDimension('B')->setAutoSize(true);
+		$xls->getActiveSheet()->getColumnDimension('C')->setAutoSize(true);
+		$xls->getActiveSheet()->getColumnDimension('D')->setAutoSize(true);
+		$xls->getActiveSheet()->getColumnDimension('E')->setAutoSize(true);
+		$xls->getActiveSheet()->getColumnDimension('F')->setAutoSize(true);
+		$xls->getActiveSheet()->getColumnDimension('G')->setAutoSize(true);
+		
+		/*foreach ($fields as $field)
+		{
+			$xls->getActiveSheet()->setCellValueByColumnAndRow($col, 1, $field);
+			$col++;
+		}*/
+		
+		$xls->getActiveSheet()->setCellValueByColumnAndRow(0, 1, "ID");
+		$xls->getActiveSheet()->setCellValueByColumnAndRow(1, 1, "Nombre");
+		$xls->getActiveSheet()->setCellValueByColumnAndRow(2, 1, "Apellido Paterno");
+		$xls->getActiveSheet()->setCellValueByColumnAndRow(3, 1, "Apellido Materno");
+		$xls->getActiveSheet()->setCellValueByColumnAndRow(4, 1, "Correo");
+		$xls->getActiveSheet()->setCellValueByColumnAndRow(5, 1, "Institucion");
+		$xls->getActiveSheet()->setCellValueByColumnAndRow(6, 1, "Password");
+		
+	
+		$row = 2;
+		foreach($registros_aux as $data)
+		{
+			$col = 0;
+			foreach ($fields as $field)
+			{
+				$xls->getActiveSheet()->setCellValueByColumnAndRow($col, $row, $data->$field);
+				$col++;
+			}
+	
+			$row++;
+		}
+		
+		
+	
+			
+		// Renombramos la hoja de trabajo
+		$xls->getActiveSheet()->setTitle('Registrados');
+			
+		// redireccionamos la salida al navegador del cliente (Excel2007)
+		header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+		header('Content-Disposition: attachment;filename="Registro Administrador.xlsx"');
+		header('Cache-Control: max-age=0');
+	
+	
+		$objWriter = PHPExcel_IOFactory::createWriter($xls, 'Excel2007');
+		$objWriter->save('php://output');
+			
+			
+		// end: setExcel
+	}
+	
 }
 ?>
