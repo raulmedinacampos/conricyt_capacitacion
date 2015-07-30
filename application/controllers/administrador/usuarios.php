@@ -48,7 +48,8 @@ class Usuarios extends CI_Controller {
 		$this->load->view('footer');
 	}
 	
-	public function listarRegistrados() {		
+	public function listarRegistrados() {
+		
 		$array = array();
 		$array['nombre'] = addslashes($this->input->post('nombre'));
 		$array['ap_paterno'] = addslashes($this->input->post('ap_paterno'));

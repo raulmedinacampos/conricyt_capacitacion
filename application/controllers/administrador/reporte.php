@@ -180,7 +180,15 @@ class Reporte extends CI_Controller {
 	public function reporteExcel()
 	{
 		$this->load->library('excel');
-		$registros = $this->adreporte->listarUsuarios2();
+		
+		$array = array();
+		$array['nombre'] = addslashes($this->input->post('nombre'));
+		$array['ap_paterno'] = addslashes($this->input->post('ap_paterno'));
+		$array['ap_materno'] = addslashes($this->input->post('ap_materno'));
+		$array['correo'] = addslashes($this->input->post('correo'));
+		$array['i.institucion'] = addslashes($this->input->post('institucion'));
+		
+		$registros = $this->adreporte->listarUsuarios2($array);
 		$registros_aux = $registros->result();
 		$fila = 1;
 		$xls = new PHPExcel();

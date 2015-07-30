@@ -53,13 +53,42 @@ class Administrador_model extends CI_Controller {
 		}
 	}
 	
-	public function listarUsuarios2() {
-		$this->db->select('u.id_usuario, u.nombre, u.ap_paterno, u.ap_materno, u.login, i.institucion, u.password,');
-		$this->db->from('usuario u');
-		$this->db->join('institucion i', 'u.id_institucion = i.id_institucion');
-	
-		$this->db->order_by('u.nombre, u.ap_paterno, u.ap_materno');
-		$query = $this->db->get();
+	public function listarUsuarios2($where="") {
+		$select = 'SELECT "u"."id_usuario", "u"."nombre", "u"."ap_paterno", "u"."ap_materno", "u"."login", "i"."institucion", "u"."password" FROM "usuario" u JOIN "institucion" i ON "u"."id_institucion" = "i"."id_institucion"';
+		$order = 'ORDER BY "u"."nombre", "u"."ap_paterno", "u"."ap_materno"';
+		
+		$nombre = "";
+		$ap_paterno = "";
+		$correo = "";
+		$institucion = "";
+		$ap_materno = "";
+		
+		if ( $where != "") {
+				
+			if($where['nombre']!= "")
+				$nombre=$where['nombre'];
+				
+			if($where['ap_paterno']!= "")
+				$ap_paterno=$where['ap_paterno'];
+				
+			if($where['ap_materno']!= "")
+				$ap_materno=$where['ap_materno'];
+				
+			if($where['correo']!= "")
+				$correo=$where['correo'];
+				
+			if($where['i.institucion']!= "")
+				$institucion=$where['i.institucion'];
+				
+			$like = "WHERE nombre ILIKE '%".$nombre."%' ESCAPE '!' AND ap_paterno ILIKE '%".$ap_paterno."%' ESCAPE '!' AND ap_materno ILIKE '%".$ap_materno."%' ESCAPE '!' AND correo ILIKE '%".$correo."%' ESCAPE '!' AND i.institucion ILIKE '%".$institucion."%' ESCAPE '!' ";
+				
+			$query = $this->db->query($select . $like . $order );
+			//print_r($where);
+				
+			$this->db->like($where);
+				
+		}
+		else $query = $this->db->query($select . $order );
 	
 		if ( $query->num_rows() > 0 ) {
 			return $query;
@@ -78,6 +107,10 @@ class Administrador_model extends CI_Controller {
 		if ( $query->num_rows() > 0 ) {
 			return $query;
 		}
+	}
+	
+	function obtenerTotalUsuarios(){
+		return $this->db->count_all('usuario');
 	}
 	
 	public function actualizarEstatusUsuario($id, $estatus) {

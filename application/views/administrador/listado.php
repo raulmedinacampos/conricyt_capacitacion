@@ -3,12 +3,23 @@
 <script type="text/javascript" src="<?php echo base_url('scripts/jquery.bs_grid.min.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('scripts/en.min.js'); ?>"></script>-->
 <script type="text/javascript" src="<?php echo base_url('scripts/buscador.js'); ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('scripts/jquery-1.11.0.min.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('scripts/jquery-1.11.3.min.js'); ?>"></script>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/jquery.dataTables.min.css'); ?>" />
-<script type="text/javascript" src="<?php echo base_url('scripts/jquery.js'); ?>"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/dataTables.bootstrap.css'); ?>" />
 <script type="text/javascript" src="<?php echo base_url('scripts/jquery.dataTables.min.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('scripts/dataTables.bootstrap.min.js'); ?>"></script>
+ <script type="text/javascript">
+
+</script>
+
+
 <script type="text/javascript">
- function mandarFormulario(){
+function reiniciarTabla(){
+	$('#resultados').dataTable().fnDestroy();
+}
+
+
+function mandarFormulario(){
 	 var cadena = $("#formBuscador").serialize();
 	 $.post("usuarios/listarRegistrados",  cadena , function(data){
 		 var obj = $.parseJSON(data);
@@ -17,12 +28,15 @@
 		 /*$.each(data, function(index, val) {
 			 alert();
 		 });*/
-		 
+		 	
 			var resultados = "";
 			var num = 1;	
 			var $tabla = $("#resultados");
+
+			reiniciarTabla();	
+			
 			$tabla.find("tr:gt(0)").remove();
-				
+			
 			$.each(obj, function(index, val) {
 					
 				resultados += '<tr>';
@@ -35,7 +49,32 @@
 				resultados += '</tr>';
 				num++;
 				});			
-				$("#resultados").append(resultados);			
+				$("#resultados").append(resultados);
+
+				document.getElementById("total_resultados").innerHTML="Total de Registrados: " + (num-1);
+				
+				$(document).ready(function() {
+									
+				    $('#resultados').dataTable({	
+
+				    	"aoColumnDefs": [
+				    	                 { 'bSortable': false, 'aTargets': [ 4, 5 ] }
+				    	              ],
+				    	
+				    	"language": {
+						    "paginate": {
+						      "previous": "&lt;&lt;", "next": "&gt;&gt;"
+						    }
+						  },
+
+						  "sDom": '<"top">rt<"bottom"p><"clear">',
+					    			    		    	
+				    	"lengthMenu": [[ 20, 20], [20, 20]],
+				    	searching: false,
+				        });
+
+				} );
+				
 			});//funtion data         
 	}//mandar formulario
 	$(function(){
@@ -49,13 +88,18 @@
 		  
 </script>
 
-<?php /*<script type="text/javascript">
-$(document).ready(function() {
-    $('#resultados').dataTable( {
-        "lengthMenu": [[1, 2], [1, 2]]
-    } );
-} );
-</script>*/?>
+<script type="text/javascript">
+
+function excel(){
+	$("#formBuscador").submit();
+}
+$(function(){
+	 $("#btnExcel").click(function(variable){
+		 variable.preventDefault();		
+		 excel(); });
+	});
+	  
+</script>	
 
 <style type="text/css">
 #resultados td:last-of-type {
@@ -84,7 +128,7 @@ $attr = array(
 		'class'	=> 'form-horizontal'
 );
 
-echo form_open(base_url('administrador/usuarios'), $attr);
+echo form_open(base_url('administrador/reporte/reporteExcel'), $attr);
 
 echo '<div class="form-group">';
 echo '<div class="col-sm-6 col-xs-12">';
@@ -162,7 +206,7 @@ echo form_button($attr);
 
 
 
-<a href= "<?php echo base_url('administrador/reporte/reporteExcel');?>" class="btn btn-success active pull-right" role="button" style="margin-right:10px" > Exportar a Excel</a>
+<a href= "#" id ="btnExcel" class="btn btn-success active pull-right" role="button" style="margin-right:10px" > Exportar a Excel</a>
 
 <?php
 
@@ -175,8 +219,9 @@ echo form_close();
 <!-- <div id="demo_grid1"></div> -->
 
 <div class="panel panel-default">
-<div class="panel-heading">Registrados</div>
+<div class="panel-heading" id="total_resultados">Total de Registrados: </div>
 <table id="resultados" class="table table-striped table-condensed">
+  <thead>
   <tr>
     <th>No.</th>
     <th>Nombre</th>
@@ -185,6 +230,7 @@ echo form_close();
     <th>Contraseña</th>
     <th>Comprobante</th>
   </tr>
+  </thead>
   <?php
   /*
   $i = 1;
