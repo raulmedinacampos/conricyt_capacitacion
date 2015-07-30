@@ -203,7 +203,9 @@ echo form_button($attr);
 
 
 ?>
-
+<script >
+mandarFormulario();
+</script>
 
 
 <a href= "#" id ="btnExcel" class="btn btn-success active pull-right" role="button" style="margin-right:10px" > Exportar a Excel</a>
@@ -220,7 +222,7 @@ echo form_close();
 
 <div class="panel panel-default">
 <div class="panel-heading" id="total_resultados">Total de Registrados: </div>
-<table id="resultados" class="table table-striped table-condensed">
+<table id="resultados" class="table table-striped table-condensed" >
   <thead>
   <tr>
     <th>No.</th>
