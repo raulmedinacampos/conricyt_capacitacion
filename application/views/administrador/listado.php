@@ -3,11 +3,9 @@
 <script type="text/javascript" src="<?php echo base_url('scripts/jquery.bs_grid.min.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('scripts/en.min.js'); ?>"></script>-->
 <script type="text/javascript" src="<?php echo base_url('scripts/buscador.js'); ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('scripts/jquery-1.11.3.min.js'); ?>"></script>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/jquery.dataTables.min.css'); ?>" />
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/dataTables.bootstrap.css'); ?>" />
 <script type="text/javascript" src="<?php echo base_url('scripts/jquery.dataTables.min.js'); ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('scripts/dataTables.bootstrap.min.js'); ?>"></script>
  <script type="text/javascript">
 
 </script>
