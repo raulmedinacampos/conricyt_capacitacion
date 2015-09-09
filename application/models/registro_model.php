@@ -109,7 +109,7 @@ class Registro_model extends CI_Model {
 	public function verificarUsuarioExistente($correo) {
 		$this->db->select('id_usuario');
 		$this->db->from('usuario');
-		$this->db->like('correo', $correo, 'none');
+		$this->db->where('correo', $correo);
 		$query = $this->db->get();
 	
 		if($query->num_rows() > 0) {
